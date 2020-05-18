@@ -3,7 +3,7 @@
         <div class="col-lg-12 col-md-12 col-xs-12">
           <div class="content has-text-centered">
             <p>
-              <strong>Contribute by Faris Humam Rosyik.</strong> by <a href="https://ui.ac.id">Universitas Indonesia</a>
+              <strong>Contribute by Faris Humam Rosyik.</strong> | <a href="https://ui.ac.id">Universitas Indonesia</a>
             </p>
           </div>
         </div>
