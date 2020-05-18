@@ -123,7 +123,8 @@ class Maintwo extends CI_Controller {
 				"features_f" => "".$this->features_six($url, $file_path),
 				"features_g" => "".$this->features_seven($url),
 				"features_h" => "".$this->features_eight($url),
-
+				"features_i" => "".$this->features_nine($url),
+				"features_j" => "".$this->features_ten($url),
 			);
 			$this->db->insert('ph_smart_features', $feature_data);
 			echo 'ok';
