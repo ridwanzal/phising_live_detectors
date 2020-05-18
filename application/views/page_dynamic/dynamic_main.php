@@ -158,6 +158,8 @@
                                     <th>Feature F</th>
                                     <th>Feature G</th>
                                     <th>Feature H</th>
+                                    <th>Feature I</th>
+                                    <th>Feature J</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -173,6 +175,8 @@
                                                 <td style="text-align:left;"><?php echo $item->features_f; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->features_g; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->features_h; ?></td>
+                                                <td style="text-align:left;"><?php echo $item->features_i; ?></td>
+                                                <td style="text-align:left;"><?php echo $item->features_j; ?></td>
                                             </tr>
                                             <?php } ?> 
                                     <?php } ?>
