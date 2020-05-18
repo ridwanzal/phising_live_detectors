@@ -1,0 +1,56 @@
+{
+    "name": "voku/php-domain-parser",
+    "description": "Fork: Public Suffix List based URL parsing implemented in PHP.",
+    "homepage": "https://github.com/voku/php-domain-parser",
+    "support": {
+        "issues": "https://github.com/voku/php-domain-parser/issues",
+        "source": "https://github.com/voku/php-domain-parser"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeremy Kendall",
+            "homepage": "http://about.me/jeremykendall",
+            "role": "Developer"
+        },
+        {
+            "name": "Contributors",
+            "homepage": "https://github.com/jeremykendall/php-domain-parser/graphs/contributors"
+        }
+    ],
+    "bin": [
+        "bin/parse",
+        "bin/update-psl"
+    ],
+    "keywords": [
+        "Public Suffix List",
+        "domain parsing",
+        "url parsing"
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "true/punycode": "~2.1",
+        "voku/arrayy": "~7.4",
+        "voku/portable-utf8": "~5.4"
+    },
+    "require-dev": {
+        "mikey179/vfsstream": "~1.6",
+        "phpunit/phpunit": "~6.0 || ~7.0"
+    },
+    "suggest": {
+        "ext-intl": "Use Intl for best performance",
+        "ext-iconv": "Use iconv for best performance",
+        "ext-mbstring": "Use Mbstring for best performance"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pdp\\": "src/Pdp/"
+        },
+        "files": [
+            "src/pdp-parse-url.php"
+        ]
+    },
+    "scripts": {
+        "post-install-cmd": "php bin/update-psl"
+    }
+}

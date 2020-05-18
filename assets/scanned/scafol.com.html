@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <title>Scafol Indonesia</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="M. Ridwan Zalbina">
+    <meta name="author" content="Building best construction product in Indonesia">
+    <link rel="icon" href="https://scafol.com/iconscafol.png">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://scafol.com/assets/css/style.css" rel="stylesheet" type="text/css">
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js'></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script src="https://scafol.com/assets/js/main.js"></script>
+    <script src="https://scafol.com/assets/js/notify.min.js"></script>
+</head>
+  <body><section>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark navbar_custom">
+            <a class="navbar-brand" href="https://scafol.com/"><img width="130" style="position:relative;left:-19px; top:-2px;margin-right:30px;" src="https://scafol.com/assets/img/logo.svg" class="image_sec2"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto navmain">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Produk
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="https://scafol.com/product/pemerintah">Pemerintahan</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://scafol.com/comingsoon">Swasta/ NGO / Individu</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://scafol.com/comingsoon">General Contractors</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://scafol.com/comingsoon" title="Blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://scafol.com/network/internship" title="Karir">Karir</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://scafol.com/network/karir" title="Internship">Internship</a>
+                    </li>
+                    <!-- <a href="https://scafol.com/comingsoon"><span class="navbar-text nav-link" title="Login" style="font-weight:500;color:#000;">
+                        Login     
+                    </span></a> -->
+                    <!-- &nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; -->
+                    <!-- <button href="https://scafol.com/comingsoon"><button title="Daftar" class="btn btn-outline-success my-2 my-sm-0 my_button" type="submit">Daftar</button></a> -->
+                </ul>
+                <ul class="navbar-nav navmain2">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle daftarbutton" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="https://scafol.com/product/pemerintah">Pemerintahan</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://console.scafol.id">Swasta/ NGO / Individu</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="https://scafol.com/comingsoon">General Contractors</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>                
+    </div>
+</section>
+<section id="main_section" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-md-10 col-xs-12">
+                        <p id="main_text">Kelola proyek konstruksi anda dengan Scafol.</p>
+                        <br/>
+                        <p class="text_submain">
+                            Scafol membantu mempermudah anda dalam memonitor, 
+                            mengevaluasi dan melaporkan proyek konstruksi anda dimana saja secara real time.
+                        </p>
+                        <br/>
+                        <br/>
+                        <button class="btn btn-outline-success my-2 my-sm-0 my_buttonx" id="trynow" type="submit">Coba Sekarang</button>
+                    </div>
+                </div>
+            </div>
+    </section>
+       <section id="third_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <p class="text_head">Fitur dan Layanan</p>
+                    <p>Ini adalah beberapa fitur dan layanan kami yang dapat digunakan sesuai kebutuhan anda.</p>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <img style="width:280px;position:relative;left:40%;" class="card-img-top" src="https://scafol.com/assets/img/dashboard/icon_1.svg" alt="Card image cap">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <p class="text_head">Dashboard</p>
+                    <p class="card-text text_lineheight text_desc">
+                        Pantau seluruh proyek konstruksi anda dengan lebih 
+                        mudah. Fitur ini memungkinkan anda memonitor 
+                        progres fisk, keuangan, lokasi, masa kerja dari 
+                        berbagai macam proyek konstruksi hanya dalam satu 
+                        halaman. Data-data yang di sajikan dapat membantu 
+                        anda melaporkan dan mengambil keputusan yang 
+                        tepat dan cepat agar proyek konstruksi bisa selesai 
+                        susuai target.
+                    </p>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <p class="text_head">Progress Tracking</p>
+                    <p class="card-text text_lineheight text_desc">
+                    Proses pelaporan dan pengolahan laporan progres 
+                    fisik proyek konstruksi dapat dilakukan secara lebih ringkas. 
+                    Setiap laporan fisik yang dikirimkan dapat di verifikasi terlebih 
+                    dahulu oleh projek manager dan konsultan supervisi 
+                    sebelum diterima head office.
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <img style="width:250px;" class="card-img-top" src="https://scafol.com/assets/img/dashboard/icon_2.svg" alt="Card image cap">
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <img style="width:290px;position:relative;left:40%;" class="card-img-top" src="https://scafol.com/assets/img/dashboard/icon_3.svg" alt="Card image cap">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <p class="text_head">Cost Control</p>
+                    <p class="card-text text_lineheight text_desc">
+                    Cost control untuk memudahkan pengguna mengetahui 
+                    biaya proyek yang telah dikeluarkan. Biaya yang telah 
+                    dikeluarkan pada proyek dapat disandingkan dengan data progres fisik, 
+                    sehingga proses monitoring menjadi lebih baik.
+                    </p>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <p class="text_head">Collaboration</p>
+                    <p class="card-text text_lineheight text_desc">
+                    Aplikasi scafol memungkinkan bagi kontraktor, 
+                    owner dan konsultan supervisi berkolaborasi 
+                    agar proses pelaporan dan pemantauan lebih 
+                    efisien dan cepat.
+                    </p>
+                </div>    
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <img style="width:290px;" class="card-img-top" src="https://scafol.com/assets/img/dashboard/icon_4.svg" alt="Card image cap">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="second_section">
+        <div class="container">
+            <center>
+                <!-- <p class="main_text_bold">Kami menyediakan layanan untuk berbagai sektor.</p>
+                <p style="width:40%;line-height:30px">Scafol merupakan Layanan Terpadu untuk Project Owner dan General Contractor.</p> -->
+                    <div style="font-size:25px; font-weight:bold; width:70%;">Coba Scafol <span style="color:#f5b400">sekarang juga</span> dan dapatkan <span style="color:#f5b400">hasil terbaik</span> untuk proyek konstruksi anda.</span>
+            </center>
+            <div class="row" style="margin-top:90px;">
+                <div class="col-lg-4 col-md-4 col-xs-12" id="pemerintah">
+                    <div class="card card_hover" style="width: 20rem;padding:10px; height:550px;">
+                        <div style="text-align:center;padding-top:50px;padding-bottom:50px;">
+                            <img style="height:100px;" src="https://scafol.com/assets/img/dashboard/icon_layanan_1.png" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"  style="font-weight:600;">Pemerintah</h5>
+                            <p class="card-text text_lineheight text_desc"  >
+                            Kami membantu pemerintah dalam proses pelaporan dan 
+                            monitoring kegiatan fisik dan juga rutin lebih mudah dan realtime.</p>
+                            <div style="position:absolute;bottom:40px;"><span style="color:#f5b400;border-radius:50px;  ">Coba Sekarang&nbsp;&nbsp;&nbsp;&nbsp;<span style="position:relative;top:6px;" data-feather="arrow-right"></span> </span>&nbsp;&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12" id="private">
+                    <div class="card card_hover" style="width: 20rem;padding:10px; height:550px;">
+                        <div style="text-align:center;padding-top:50px;padding-bottom:50px;">
+                            <img style="height:100px;"  src="https://scafol.com/assets/img/iconbrand/icon_layanan_2.png" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-weight:600;">Perusahaan</h5>
+                            <p class="card-text text_lineheight text_desc">
+                            Scafol menyediakan sistem yang membantu proses monitoring dan 
+                            pelaporan proyek konstruksi anda meskipun dalam jumlah banyak 
+                            dan tersebar berbagai macam lokasi.
+                            </p>
+                            <div style="position:absolute;bottom:40px;"><span style="color:#f5b400;border-radius:50px;  ">Coba Sekarang&nbsp;&nbsp;&nbsp;&nbsp;<span style="position:relative;top:6px;" data-feather="arrow-right"></span> </span>&nbsp;&nbsp;</div>
+                            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12" id="contractor">
+                    <div class="card card_hover" style="width: 20rem;padding:10px; height:550px;">
+                        <div style="text-align:center;padding-top:50px;padding-bottom:60px;">
+                            <img style="height:100px;" src="https://scafol.com/assets/img/iconbrand/icon_layanan_3.png" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-weight:600;">General Contractor</h5>
+                            <p class="card-text text_lineheight text_desc">
+                                Kelola keuangan, waktu dan sumberdaya secara realtime dengan Scafol.
+                            </p>
+                            <div style="position:absolute;bottom:40px;"><span style="color:#f5b400;border-radius:50px;  ">Coba Sekarang&nbsp;&nbsp;&nbsp;&nbsp;<span style="position:relative;top:6px;" data-feather="arrow-right"></span> </span>&nbsp;&nbsp;</div>
+                            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </section>   <section id="footer_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <a href="https://scafol.com/"><img width="140" style="position:relative; left:0px;top:-3px;" src="https://scafol.com/assets/img/logo_footer.svg" class="image_sec2"></a>
+                    <br/>
+                    <br/>
+                    <p style="color : #fff; font-size:14px; line-height:30px; width:360px;margin-top:10px;">
+                       Daftarkan email anda untuk mendapatkan info update terbaru dari Scafol.
+                    </p>
+                    <div class="input-group mb-2" style="width:370px;">
+                        <input id="emails_letter" type="text" class="form-control" placeholder="Subscribe our news letter" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <span id="subscribe_button" class="input-group-text">Subscribe</span>
+                        </div>
+                    </div>dimana
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <ul class="list-unstyled text-small listme">
+                        <li><a class="" href="https://scafol.com/">Produk</a></li>
+                        <li><a class="" href="https://scafol.com/comingsoon">Blog</a></li>
+                        <li><a class="" href="https://scafol.com/network/karir"   >Karir</a></li>
+                        <li><a class="" href="https://scafol.com/network/karir">Internship</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12">
+                    <ul class="list-unstyled text-small listme">
+                        <li><a class="" href="https://scafol.com/comingsoon">FAQ</a></li>
+                        <li><a class="" href="https://scafol.com/termsandservice">Term of Service</a></li>
+                        <li><a class="" href="https://scafol.com/privacypolicy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-xs-12 ">
+                    <div class="text_footer">&copy;&nbsp;Copyright 2018 - 2020. All Right Reserved PT. Aplikasi Konstruksi Global | Indonesia.</div>
+                    <div style="color:#bbb;font-size:9px;position;relative;top:-25px;">Scafol is a trademark of PT Aplikasi Konstruksi Global. Registered in the Directorate General of Intellectual Property of the Republic of Indonesia.</div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="flex_social">
+                        <span style="color:#fff;">scafoltk@gmail.com</span>&nbsp;&nbsp;<span style="color:#fff;">|</span>
+                        <a target="_blank" href="https://en-gb.facebook.com/scafol/?ref=page_internal"><img title="facebook" style="position:relative; top:-2px;" src="https://scafol.com/assets/img/iconset/fb.svg" class="image_sec2"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a target="_blank" href="https://twitter.com/scafol"><img title="twitter" style="position:relative; top:-2px;" src="https://scafol.com/assets/img/iconset/twitter.svg" class="image_sec2"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a target="_blank" href="https://www.instagram.com/scafolid/"><img title="instagram" style="position:relative; top:-2px;" src="https://scafol.com/assets/img/iconset/instagram.svg" class="image_sec2"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a target="_blank" href="https://www.linkedin.com/company/14534415/admin/"><img title="linkedin" style="position:relative; top:-2px;" src="https://scafol.com/assets/img/iconset/linkedin.svg" class="image_sec2"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+    <script src="https://scafol.com/assets/js/main.js"></script>
+    <script>
+        function isEmail(email) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+        }
+        $(document).ready(function(){
+            feather.replace();  
+            let proceed = false;
+
+            $("#trynow").click(function() {
+                $('html, body').animate({
+                    scrollTop: $("#second_section").offset().top
+                }, 800);
+            });
+
+            $('#emails_letter').on('change', function(){
+                let value = $(this).val();
+                if(isEmail(value)){
+                    proceed = true;
+                    $("#emails_letter").css({
+                        'border': '1px solid #ced4da'
+                    });
+                }else{
+                    $.notify("Please provide valid email address","warn");
+                    $("#emails_letter").css({
+                        'border' : '1px solid #ff5151'
+                    });
+                }
+            });
+
+            $('#subscribe_button').on('click', function(){
+                if(proceed){
+                    console.log($('#emails_letter').val());
+                    $.ajax({
+                        url: APICONF.url + '/newsletter/request', 
+                        method : 'POST',
+                        data : {
+                            email : '' + $('#emails_letter').val(),
+                        },
+                        success: function(result){
+                            $.notify("Berhasil ditambahkan.","success");
+                            $('#emails_letter').val('');
+                        }
+                    });
+                    console.log('berhasil');
+                }else{
+                    // alert('false');
+                    console.log('false');
+                }
+            });
+            $('#pemerintah').on('click', function(){
+                location.href = "https://scafol.com/product/pemerintah";
+            });
+
+            $('#private').on('click', function(){
+                location.href = "https://scafol.com/comingsoon";
+            });
+
+            $('#contractor').on('click', function(){
+                location.href = "https://scafol.com/comingsoon";
+            });
+
+
+            $('#diva_menu').on('click', function(){
+                $('.list_features').removeClass('activeme');
+                $(this).addClass('activeme');
+                $('.divcontent').hide();
+                $('#diva').show();
+                $('.img_product').attr('src', 'https://scafol.com//assets/img/gov/dashboard.png')
+            });
+
+            $('#divb_menu').on('click', function(){
+                $('.list_features').removeClass('activeme');
+                $(this).addClass('activeme');
+                $('.divcontent').hide();
+                $('#divb').show();
+                $('.img_product').attr('src', 'https://scafol.com//assets/img/gov/lap-fisik.png')
+            });
+
+            $('#divc_menu').on('click', function(){
+                $('.list_features').removeClass('activeme');
+                $(this).addClass('activeme');
+                $('.divcontent').hide();
+                $('#divc').show();
+                $('.img_product').attr('src', 'https://scafol.com//assets/img/gov/gis.png')
+            });
+
+            $('#divd_menu').on('click', function(){
+                $('.list_features').removeClass('activeme');
+                $(this).addClass('activeme');
+                $('.divcontent').hide();
+                $('#divd').show();
+                $('.img_product').attr('src', 'https://scafol.com//assets/img/gov/pengarsipan.png')
+            });
+
+            $('#dive_menu').on('click', function(){
+                $('.list_features').removeClass('activeme');
+                $(this).addClass('activeme');
+                $('.divcontent').hide();
+                $('#dive').show();
+                $('.img_product').attr('src', 'https://scafol.com//assets/img/gov/integrasi.png')
+            });
+
+        });
+    </script>
+  </body>
+</html>
