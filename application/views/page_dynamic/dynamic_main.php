@@ -149,17 +149,17 @@
                         <table  id="table3" class="table table-striped table-bordered responsive nowrap" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Scan Id</th>
-                                    <th>Feature A</th>
-                                    <th>Feature B</th>
-                                    <th>Feature C</th>
-                                    <th>Feature D</th>
-                                    <th>Feature E</th>
-                                    <th>Feature F</th>
-                                    <th>Feature G</th>
-                                    <th>Feature H</th>
-                                    <th>Feature I</th>
-                                    <th>Feature J</th>
+                                    <th>Sc.Id</th>
+                                    <th>FeatureA</th>
+                                    <th>FeatureB</th>
+                                    <th>FeatureC</th>
+                                    <th>FeatureD</th>
+                                    <th>FeatureE</th>
+                                    <th>FeatureF</th>
+                                    <th>FeatureG</th>
+                                    <th>FeatureH</th>
+                                    <th>FeatureI</th>
+                                    <th>FeatureJ</th>
                                 </tr>
                             </thead>
                             <tbody>
