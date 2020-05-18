@@ -240,6 +240,7 @@
             } );
 
             $('#table3').DataTable({
+                order: [[ 0, "desc" ]],
                 responsive : true,
                 dom: 'Bfrtip',
                 buttons: [
