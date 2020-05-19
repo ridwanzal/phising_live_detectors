@@ -142,7 +142,7 @@ class Maintwo extends CI_Controller {
 		$c = $this->cek_panjanguri($uri);
 		$d = $this->cek_symbols($uri, '@');
 
-		if(!$a || $b || $c || $d){
+		if(!$a && $b && $c && $d){
 			return 1;
 		}else{
 			return 0;
@@ -159,7 +159,7 @@ class Maintwo extends CI_Controller {
 		$b = $this->cek_domainmurah($uri);
 		$c = $this->cek_symbols($uri, '@');
 
-		if(!$a || $b || $c){
+		if(!$a && $b && $c){
 			return 1;
 		}else{
 			return 0;
@@ -178,7 +178,7 @@ class Maintwo extends CI_Controller {
 		$b= $this->cek_jumlahdot($uri);
 		$c = $this->cek_symbols($uri, '@');
 
-		if(!$a || $b || $c){
+		if(!$a &&  $b && $c){
 			return 1;
 		}else{
 			return 0;
@@ -197,7 +197,7 @@ class Maintwo extends CI_Controller {
 		$a = $this->cek_http($uri);
 		$b = $this->cek_doubletopdomain($uri);
 
-		if(!$a || $b){
+		if(!$a && $b){
 			return 1;
 		}else{
 			return 0;
@@ -216,7 +216,7 @@ class Maintwo extends CI_Controller {
 		$b = $this->cek_jumlahpath($uri);
 		$c = $this->cek_panjanguri($uri);
 
-		if(!$a || $b || $c){
+		if(!$a && $b && $c){
 			return 1;
 		}else{
 			return 0;
@@ -234,7 +234,7 @@ class Maintwo extends CI_Controller {
 		// markup atau html
 		$a = $this->cek_formcredential($file);
 		$b = $this->cek_sensitiveinfo($uri);
-		if($a || $b){
+		if($a && $b){
 			return 1;
 		}else{
 			return 0;
@@ -251,7 +251,7 @@ class Maintwo extends CI_Controller {
 		$a = $this->cek_http($uri);
 		$b = $this->cek_panjanguri($uri);
 		$c = $this->cek_jumlahpath($uri);
-		if(!$a || $b || $c){
+		if(!$a && $b && $c){
 			return 1;
 		}else{
 			return 0;
@@ -269,7 +269,7 @@ class Maintwo extends CI_Controller {
 		$a = $this->cek_sensitiveinfo($uri);
 		$b = $this->cek_shortlink($uri);
 
-		if($a || $b){
+		if($a && $b){
 			return 1;
 		}else{
 			return 0;
@@ -287,7 +287,7 @@ class Maintwo extends CI_Controller {
 		$b = $this->cek_panjanguri($uri);
 		$c = $this->cek_symbols($uri, '-');
 
-		if(!$a || $b || $c){
+		if(!$a && $b && $c){
 			return 1;
 		}else{
 			return 0;
@@ -306,7 +306,7 @@ class Maintwo extends CI_Controller {
 		$a = $this->cek_http($uri);
 		$b = $this->cek_panjanguri($uri);
 
-		if(!$a || $b){
+		if(!$a && $b){
 			return 1;
 		}else{
 			return 0;
