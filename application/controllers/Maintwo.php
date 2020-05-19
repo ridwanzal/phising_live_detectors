@@ -375,7 +375,7 @@ class Maintwo extends CI_Controller {
 	// 4
 	public function cek_domainmurah($uri){
 		// cek daftar tld dengan harga sewa yang murah
-		$array = array("tech","online", "xyz", "red", "blue", "domain", "my.id", "webiste");
+		$array = array("tech","online", "xyz", "red", "blue", "domain", "my.id", "website");
 		$contains = $this->contains($uri, $array);
 		if($contains){
 			return true;
