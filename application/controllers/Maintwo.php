@@ -87,33 +87,32 @@ class Maintwo extends CI_Controller {
 		if($this->db->affected_rows() > 0){
 			$id = $this->db->insert_id();
 			$file_path = './assets/scanned/'.$file_name;
-			// $feature_data = array(
-			// 	"scan_id" => $id,
-			// 	"url_link"=> "".$url,
-			// 	"url_protocol" => "".$this->read_url_protocol($url),
-			// 	"url_favicon" => "".$this->read_html_favicon($file_path),
-			// 	"url_standard_port" => "".$this->read_url_port($url),
-			// 	"url_symbol" => "".$this->read_url_symbol($url),
-			// 	"url_subdomain"=> "".$this->read_url_subdomain($url),
-			// 	"url_length" => "".$this->read_url_length($url),
-			// 	"url_dot_total" => "".$this->read_url_dot_total($url),
-			// 	"url_sensitive_char" => "".$this->read_special_char($url),
-			// 	"html_login" => "".$this->read_html_login($file_path),
-			// 	"html_empty_link" => "".$this->read_html_empty_link($file_path),
-			// 	"html_length" => "".$this->read_html_filesize($file_path),
-			// 	"html_is_consist" => "".$this->read_consistency($file_path, $url),
-			// 	"html_js_list" => "".$this->read_html_enabled_js($file_path),
-			// 	"html_link_external_list" => "".$this->read_html_external_link($file_path),
-			// 	"html_redirect" => "".$this->read_html_redirect($file_path),
-			// 	"html_iframe" => "".$this->read_html_iframe($file_path),
-			// 	"html_favicon" => "".$this->read_html_favicon($file_path),
-			// 	"feature_type" => "0" // ini bukan fitur ini flag 
-
-			// );	
-			// $this->db->insert('ph_features', $feature_data);
-			// echo 'ok';
-
 			$feature_data = array(
+			"scan_id" => $id,
+			"url_link"=> "".$url,
+			"url_protocol" => "".$this->cek_http($url),
+			"url_favicon" => "",
+			"url_standard_port" => "",
+			"url_symbol" => "",
+			"url_subdomain"=> "",
+			"url_length" => "".$this->cek_panjanguri($url),
+			"url_dot_total" => "",
+			"url_sensitive_char" => "",
+			"html_login" => "",
+			"html_empty_link" => "",
+			"html_length" => "",
+			"html_is_consist" => "",
+			"html_js_list" => "",
+			"html_link_external_list" => "",
+			"html_redirect" => "",
+			"html_iframe" => "",
+			"html_favicon" => "",
+			"feature_type" => "0" // ini bukan fitur ini flag 
+
+			);	
+			$this->db->insert('ph_features', $feature_data);
+
+			$feature_data2 = array(
 				"scan_id" => $id,
 				"features_a" => "".$this->features_one($url),
 				"features_b" => "".$this->features_two($url),
@@ -126,7 +125,7 @@ class Maintwo extends CI_Controller {
 				"features_i" => "".$this->features_nine($url),
 				"features_j" => "".$this->features_ten($url),
 			);
-			$this->db->insert('ph_smart_features', $feature_data);
+			$this->db->insert('ph_smart_features', $feature_data2);
 			echo 'ok';
 		}
 
@@ -170,7 +169,7 @@ class Maintwo extends CI_Controller {
 	*/
 	public function features_two($uri){
 		$a = $this->cek_http($uri);
-		$b= $this->cek_jumlahdot($uri);
+		$b = $this->cek_jumlahdot($uri);
 
 		if(!$a && $b){
 			return 1;
@@ -188,8 +187,8 @@ class Maintwo extends CI_Controller {
 
 	public function features_three($uri){
 		$a = $this->cek_http($uri);
-		$b= $this->cek_panjanguri($uri);
-		if(!$a &&  $b){
+		$b = $this->cek_panjanguri($uri);
+		if(!$a && $b){
 			return 1;
 		}else{
 			return 0;

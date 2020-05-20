@@ -206,7 +206,7 @@
                             urls : get_data_input
                         },
                         success: function(result){
-                            if(result == 'ok'){
+                            if(result == 'ok' || result){
                                 setTimeout(function(){
                                     $('.loader').hide();
                                     $('#status').hide();
