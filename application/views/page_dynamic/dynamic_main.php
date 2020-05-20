@@ -74,7 +74,7 @@
                                             <tr>
                                                 <td style="background:#ececec;text-align:left;"><?php echo $item->scan_id; ?></td>
                                                 <td title="<?php echo $item->dataset_url; ?>" style="color:#3c70a4;text-align:left;"><?php echo substr($item->dataset_url, 0, 50);?></td>
-                                                <td title="<?php echo $item->dataset_html_file; ?>" style="color:#3c70a4;text-align:left;"><?php echo $item->dataset_html_file; ?></td>
+                                                <td title="<?php echo $item->dataset_html_file; ?>" style="color:#3c70a4;text-align:left;"><?php echo substr($item->dataset_html_file,0,50); ?></td>
                                                 <td style="text-align:left;"><?php echo $item->date_created; ?></td>
                                             </tr>
                                             <?php } ?> 
