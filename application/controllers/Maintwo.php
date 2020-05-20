@@ -132,17 +132,31 @@ class Maintwo extends CI_Controller {
 
 	}
 
+	/*
+	all features
+	o	One: http
+	o	Two: http + total dot
+	o	Three: http + Panjang url
+	o	Four: http + double top domain
+	o	Five: http + jumlah path
+	o	Six: formcredential + sensitive info
+	o	Seven: http + domain murah
+	o	Eight: shortlink + sensitive info
+	o	Nine: Minimal 3 fitur bebas terdeteksi
+	o	Ten: Minimal 4 fitur bebas terdeteksi
+	*/
+
 	/*	+++ DONE ++ 
 		FITUR PERTAMA
-		http + IP Address + URL panjang + @
+		o	One: http
 	*/
 	public function features_one($uri){
 		$a = $this->cek_http($uri);
-		$b = $this->cek_ipaddress($uri);
-		$c = $this->cek_panjanguri($uri);
-		$d = $this->cek_symbols($uri, '@');
+		// $b = $this->cek_ipaddress($uri);
+		// $c = $this->cek_panjanguri($uri);
+		// $d = $this->cek_symbols($uri, '@');
 
-		if(!$a && $b && $c && $d){
+		if(!$a){
 			return 1;
 		}else{
 			return 0;
@@ -152,14 +166,13 @@ class Maintwo extends CI_Controller {
 	/*
 		+++ DONE ++ 
 		FITUR KEDUA
-		http + hosting murah/gratisan + kata sensitif  
+		o	Two: http + total dot
 	*/
 	public function features_two($uri){
 		$a = $this->cek_http($uri);
-		$b = $this->cek_domainmurah($uri);
-		$c = $this->cek_symbols($uri, '@');
+		$b= $this->cek_jumlahdot($uri);
 
-		if(!$a && $b && $c){
+		if(!$a && $b){
 			return 1;
 		}else{
 			return 0;
@@ -170,15 +183,13 @@ class Maintwo extends CI_Controller {
 	/*
 		+++ DONE ++ 
 		FITUR KETIGA
-		http + jumlah dot +(?)
+		o	Three: http + Panjang url
 	*/
 
 	public function features_three($uri){
 		$a = $this->cek_http($uri);
-		$b= $this->cek_jumlahdot($uri);
-		$c = $this->cek_symbols($uri, '@');
-
-		if(!$a &&  $b && $c){
+		$b= $this->cek_panjanguri($uri);
+		if(!$a &&  $b){
 			return 1;
 		}else{
 			return 0;
@@ -214,9 +225,8 @@ class Maintwo extends CI_Controller {
 	public function features_five($uri){
 		$a = $this->cek_http($uri);
 		$b = $this->cek_jumlahpath($uri);
-		$c = $this->cek_panjanguri($uri);
 
-		if(!$a && $b && $c){
+		if(!$a && $b){
 			return 1;
 		}else{
 			return 0;
@@ -249,9 +259,8 @@ class Maintwo extends CI_Controller {
 
 	public function features_seven($uri){
 		$a = $this->cek_http($uri);
-		$b = $this->cek_panjanguri($uri);
-		$c = $this->cek_jumlahpath($uri);
-		if(!$a && $b && $c){
+		$b = $this->cek_domainmurah($uri);
+		if(!$a && $b){
 			return 1;
 		}else{
 			return 0;
@@ -305,8 +314,10 @@ class Maintwo extends CI_Controller {
 	public function features_ten($uri){
 		$a = $this->cek_http($uri);
 		$b = $this->cek_panjanguri($uri);
+		$c = $this->cek_sensitiveinfo($uri);
+		$d = $this->cek_shortlink($uri);
 
-		if(!$a && $b){
+		if(!$a && $b && $c && $d){
 			return 1;
 		}else{
 			return 0;
