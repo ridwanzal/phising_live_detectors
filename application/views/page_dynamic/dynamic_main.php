@@ -94,7 +94,6 @@
                                     <th>URL</th>
                                     <th>Protocol</th>
                                     <th>Symbols</th>
-                                    <th>Subdomain</th>
                                     <th>Length</th>
                                     <th>Dot</th>
                                     <th>Sensitive</th>
@@ -118,7 +117,6 @@
                                                 <td style="text-align:left;"><?php echo $item->url_link; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_protocol; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_symbol; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->url_subdomain; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_length; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_dot_total; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_sensitive_char; ?></td>

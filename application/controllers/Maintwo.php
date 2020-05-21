@@ -297,7 +297,7 @@ class Maintwo extends CI_Controller {
 		$b = $this->cek_panjanguri($uri);
 		$c = $this->cek_symbols($uri);
 
-		if($a && $b && $c){
+		if($a || $b || $c){
 			return 1;
 		}else{
 			return 0;
@@ -318,7 +318,7 @@ class Maintwo extends CI_Controller {
 		$c = $this->cek_sensitiveinfo($uri);
 		$d = $this->cek_shortlink($uri);
 
-		if($a && $b && $c && $d){
+		if($a || $b || $c || $d){
 			return 1;
 		}else{
 			return 0;
