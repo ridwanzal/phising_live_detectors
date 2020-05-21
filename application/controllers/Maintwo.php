@@ -43,8 +43,13 @@ class Maintwo extends CI_Controller {
 		$exec2 = $this->db->query($query2);
 		$result2 = $exec2->result();
 
+		$query3 = "SELECT * FROM ph_features ORDER BY feature_id DESC";
+		$exec3 = $this->db->query($query3);
+		$result3 = $exec3->result();
+
 		$data['scan'] = $result;
-		$data['features'] = $result2;
+		$data['smart_features'] = $result2;
+		$data['features'] = $result3;
         $this->load->view('page_static/static_header', $data);
         $this->load->view('page_static/static_navbar', $data);
         $this->load->view('page_dynamic/dynamic_main', $data);
@@ -88,27 +93,24 @@ class Maintwo extends CI_Controller {
 			$id = $this->db->insert_id();
 			$file_path = './assets/scanned/'.$file_name;
 			$feature_data = array(
-			"scan_id" => $id,
-			"url_link"=> "".$url,
-			"url_protocol" => "".$this->cek_http($url),
-			"url_favicon" => "",
-			"url_standard_port" => "",
-			"url_symbol" => "",
-			"url_subdomain"=> "",
-			"url_length" => "".$this->cek_panjanguri($url),
-			"url_dot_total" => "",
-			"url_sensitive_char" => "",
-			"html_login" => "",
-			"html_empty_link" => "",
-			"html_length" => "",
-			"html_is_consist" => "",
-			"html_js_list" => "",
-			"html_link_external_list" => "",
-			"html_redirect" => "",
-			"html_iframe" => "",
-			"html_favicon" => "",
-			"feature_type" => "0" // ini bukan fitur ini flag 
-
+				"scan_id" => $id,
+				"url_link"=> "".$url,
+				"url_protocol" => "".$this->read_url_protocol($url),
+				"url_symbol" => "".$this->cek_symbols($url),
+				"url_subdomain"=> "".$this->read_url_subdomain($url),
+				"url_length" => "".$this->cek_panjanguri($url),
+				"url_dot_total" => "".$this->cek_jumlahdot($url),
+				"url_sensitive_char" => "".$this->read_special_char($url),
+				"html_login" => "".$this->cek_login($file_path),
+				"html_empty_link" => "".$this->read_html_empty_link($file_path),
+				"html_length" => "".$this->read_html_filesize($file_path),
+				"html_is_consist" => "".$this->read_consistency($file_path, $url),
+				"html_redirect" => "".$this->read_html_redirect($file_path),
+				"html_iframe" => "".$this->read_html_iframe($file_path),
+				"html_favicon" => "".$this->read_html_favicon($file_path),
+				"url_doubletopdomain" => "".$this->cek_doubletopdomain($file_path),
+				"url_shortlink" => "".$this->cek_shortlink($file_path),
+				"url_domain_murah" => "".$this->cek_domainmurah($file_path),
 			);	
 			$this->db->insert('ph_features', $feature_data);
 
@@ -155,7 +157,7 @@ class Maintwo extends CI_Controller {
 		// $c = $this->cek_panjanguri($uri);
 		// $d = $this->cek_symbols($uri, '@');
 
-		if(!$a){
+		if($a){
 			return 1;
 		}else{
 			return 0;
@@ -171,7 +173,7 @@ class Maintwo extends CI_Controller {
 		$a = $this->cek_http($uri);
 		$b = $this->cek_jumlahdot($uri);
 
-		if(!$a && $b){
+		if($a && $b){
 			return 1;
 		}else{
 			return 0;
@@ -188,7 +190,7 @@ class Maintwo extends CI_Controller {
 	public function features_three($uri){
 		$a = $this->cek_http($uri);
 		$b = $this->cek_panjanguri($uri);
-		if(!$a && $b){
+		if($a && $b){
 			return 1;
 		}else{
 			return 0;
@@ -207,7 +209,7 @@ class Maintwo extends CI_Controller {
 		$a = $this->cek_http($uri);
 		$b = $this->cek_doubletopdomain($uri);
 
-		if(!$a && $b){
+		if($a && $b){
 			return 1;
 		}else{
 			return 0;
@@ -225,7 +227,7 @@ class Maintwo extends CI_Controller {
 		$a = $this->cek_http($uri);
 		$b = $this->cek_jumlahpath($uri);
 
-		if(!$a && $b){
+		if($a && $b){
 			return 1;
 		}else{
 			return 0;
@@ -259,7 +261,7 @@ class Maintwo extends CI_Controller {
 	public function features_seven($uri){
 		$a = $this->cek_http($uri);
 		$b = $this->cek_domainmurah($uri);
-		if(!$a && $b){
+		if($a && $b){
 			return 1;
 		}else{
 			return 0;
@@ -267,7 +269,7 @@ class Maintwo extends CI_Controller {
 	}
 
 
-	/*
+	/*domainm
 		++ DONE ++
 		FITUR KEDELAPAN
 		shortlink + kata sensitive
@@ -293,9 +295,9 @@ class Maintwo extends CI_Controller {
 	public function features_nine($uri){
 		$a = $this->cek_http($uri);
 		$b = $this->cek_panjanguri($uri);
-		$c = $this->cek_symbols($uri, '-');
+		$c = $this->cek_symbols($uri);
 
-		if(!$a && $b && $c){
+		if($a && $b && $c){
 			return 1;
 		}else{
 			return 0;
@@ -316,7 +318,7 @@ class Maintwo extends CI_Controller {
 		$c = $this->cek_sensitiveinfo($uri);
 		$d = $this->cek_shortlink($uri);
 
-		if(!$a && $b && $c && $d){
+		if($a && $b && $c && $d){
 			return 1;
 		}else{
 			return 0;
@@ -349,7 +351,7 @@ class Maintwo extends CI_Controller {
 		*/
 		$result = false;
 		$check_protocol =  parse_url($uri, PHP_URL_SCHEME);
-		if($check_protocol == 'https'){
+		if($check_protocol == 'http'){
 			$result = true;
 		}
 
@@ -555,9 +557,16 @@ class Maintwo extends CI_Controller {
 	}
 
 	// 11 check if there is a 
-	public function cek_symbols($uri, $condition){
-		$cek = $this->str_contains($uri, $condition);
-		return $cek;
+	public function cek_symbols($uri){
+		// $cek = $this->str_contains($uri, $condition);
+		// return $cek;
+		$array = array("@","-", "?");
+		$contains = $this->contains($uri, $array);
+		if($contains){
+			return true;
+		}else{	
+			return false;
+		}
 	}
 
 	public function test(){
@@ -578,9 +587,365 @@ class Maintwo extends CI_Controller {
 		);
 		echo json_encode($result);
 	}
+
+	public function read_url_length($uri){
+		$check = strlen($uri);
+		$result = 0;
+		if($check > 75){
+			$result = 1;
+		}
+		return $result;
+	}
+
+
+
+
+	// Old modules
+
+	public function read_html_login($file){
+		$dom = new Dom;
+		$dom->setOptions([
+			'cleanupInput' => false,
+			'removeScripts' => true,
+			'htmlSpecialCharsDecode' => false,
+			'strict' => false,
+			'whitespaceTextNode' => false
+		]);
+		$dom->loadFromFile($file);
+		$a = $dom->find('a');
+		$found = false;
+		foreach($a as $links){
+			$get_value = $links->getAttribute('href');
+			$word1 = 'login';
+			$word2 = 'signin';
+			$word3 = "Sign";
+			if(strpos($get_value, $word1) !== false || strpos($get_value, $word2) !== false || strpos($get_value, $word3) !== false){
+				$found = true;
+			} else{
+				$found = false;
+			}
+		}
+		if($found){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+
+
+
+	public function read_consistency($file, $uri){
+		// check on data uri/url or title
+		$dom = new Dom;
+		$get_host = parse_url($uri, PHP_URL_HOST); 
+		$dom->setOptions([
+			'cleanupInput' => false,
+			'removeScripts' => true,
+			'htmlSpecialCharsDecode' => false,
+			'strict' => false,
+			'whitespaceTextNode' => false
+		]);
+		$dom->loadFromFile($file);
+		$title = $dom->find('title');
+		$found = false;
+		foreach($title as $t){
+			$get_value = $t->innerHtml;
+			if($get_value == $get_host || strpos($get_value, $get_host) !== false){
+				$found = true;
+			}else{
+				$found = false;
+			}
+		}
+
+		if($found){
+			return 0;
+		}else{
+			return 1;
+		}
+	}
+
+	public function read_url_protocol($uri){
+		$check_protocol =  parse_url($uri, PHP_URL_SCHEME);
+		$result = 0;
+		if($check_protocol != 'https'){
+			$result = 1;
+		}
+		return $result;
+	}
+
+	public function read_html_external_link($file){
+		$dom = new Dom;
+		$dom->setOptions([
+			'cleanupInput' => false,
+			'removeScripts' => true,
+			'htmlSpecialCharsDecode' => false,
+			'strict' => false,
+			'whitespaceTextNode' => false
+		]);
+		$dom->loadFromFile($file);
+		$a = $dom->find('a');
+		$found = false;
+		foreach($a as $links){
+			$get_value = $links->getAttribute('href');
+			if(substr( $get_value, 0, 7 ) === "http://" || substr( $get_value, 0, 8 ) === "https://" ){
+				$found = true;
+			}else{
+				$found = false;
+			}
+		}
+		if($found){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+
+
+	public function read_html_enabled_js($file){
+		$dom = new Dom;
+		$dom->setOptions([
+			'cleanupInput' => false,
+			'htmlSpecialCharsDecode' => false,
+			'strict' => false,
+			'whitespaceTextNode' => false
+		]);
+		$dom->loadFromFile($file);
+		$a = $dom->find('script');
+		$found = false;
+		foreach($a as $links){
+			if($links){
+				$found = true;
+			}else{
+				$found = false;
+			}
+		}
+
+		if($found){
+			return 1;
+		}else{
+			return 0;
+		}	
+	}
+
+
+	public function read_html_redirect($file){
+		$dom = new Dom;
+		$dom->setOptions([
+			'cleanupInput' => false,
+			'removeScripts' => true,
+			'htmlSpecialCharsDecode' => false,
+			'strict' => false,
+			'whitespaceTextNode' => false
+		]);
+		$dom->loadFromFile($file);
+		$a = $dom->find('meta');
+		$found = false;
+		foreach($a as $links){
+			$get_value = $links->getAttribute('http-equiv');
+			if($get_value == "refresh"){
+				$found = true;
+			}else{
+				$found = false;
+			}
+		}
+
+		if($found){
+			return 1;
+		}else{
+			return 0;
+		}	
+	}
+
+
+	public function read_html_empty_link($file){
+		$dom = new Dom;
+		$dom->setOptions([
+			'cleanupInput' => false,
+			'removeScripts' => true,
+			'htmlSpecialCharsDecode' => false,
+			'strict' => false,
+			'whitespaceTextNode' => false
+		]);
+		$dom->loadFromFile($file);
+		$a = $dom->find('a');
+		$found = false;
+		foreach($a as $links){
+			$get_value = $links->getAttribute('href');
+			if($get_value == "" || $get_value == null){
+				$found = true;
+			}else{
+				$found = false;
+			}
+		}
+
+		if($found){
+			return 1;
+		}else{
+			return 0;
+		}	
+	}
 	
 
+	public function read_html_filesize($file){
+		$result = 0;
+		$size = filesize($file);
+		if($size < 102400){
+			$result = 1;
+		}
+
+		return $result;
+	}
+
 	
+	public function read_html_iframe($file){
+		$dom = new Dom;
+		$dom->setOptions([
+			'cleanupInput' => false,
+			'removeScripts' => true,
+			'htmlSpecialCharsDecode' => false,
+			'strict' => false,
+			'whitespaceTextNode' => false
+		]);
+		$dom->loadFromFile($file);
+		$a = $dom->find('iframe');
+		$found = false;
+		foreach($a as $links){
+			$get_value = $links->getAttribute('src');
+			if($get_value !="" || $get_value == ""){
+				$found = true;
+			}else{
+				$found = false;
+			}
+		}
+
+		if($found){
+			return 1; // kalo ketemu phishing
+		}else{
+			return 0; // kalo ketemu bukan phishing
+		}	
+	}
+
+
+	public function read_html_favicon($file){
+		// echo $file;
+		$dom = new Dom;
+		$dom->setOptions([
+			'cleanupInput' => false,
+			'removeScripts' => true,
+			'htmlSpecialCharsDecode' => false,
+			'strict' => false,
+			'whitespaceTextNode' => false
+		]);
+		$dom->loadFromFile($file);
+		$a = $dom->find('link');
+		$found = false;
+		foreach($a as $links){
+			$get_value = $links->getAttribute('rel');
+			if($get_value == 'shortcut icon'){
+				$found = false;
+			}else{
+				$found = true;
+			}
+		}
+
+		if($found){
+			return 0; // kalo ketemu bukan phishing
+		}else{
+			return 1; // kalo ketemu phishing
+		}
+	}
+	
+	public function read_url_subdomain($uri){
+		$result = 0 ;
+		$parsed_url = parse_url($uri, PHP_URL_HOST);
+		if($parsed_url != null || $parsed_url != ''){
+			$check_contain_sub = explode('.', $parsed_url);
+			if($check_contain_sub[0]){
+				$result = 1;
+			}else{
+				$result = 0;
+			}
+		}else{
+			$result = 0;
+		}
+
+		return $result;
+	}
+
+
+	public function read_url_port($uri){
+		$check_protocol =  parse_url($uri, PHP_URL_SCHEME);
+		$result = 0;
+		if($check_protocol == 'http'){
+			$result = 1;
+		}
+		return $result;
+	}
+
+
+	public function read_special_char($uri){
+		$result = 0 ;
+		$vocab_phishing = array("secure", 
+								 "account",
+								 "login", "ebayisapi",
+								 "signin", "banking", "confirm");
+			if (in_array("uri", $vocab_phishing))
+			{
+				$result = 1 ;
+			}
+		return $result;
+	}
+
+
+	public function read_url_symbol($uri){
+		$result = 0 ;
+		if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $uri))
+			{
+				$result = 1;
+			// one or more of the 'special characters' found in $string
+			}
+		return $result;
+	}
+
+
+	public function read_url_dot_total($uri){
+		$split = explode (".", $uri);
+		$dot_in_total = sizeof($split);
+		$result = 0;
+		if($dot_in_total >= 3){
+				$result = 1;
+		}
+		return $result;
+	}
+
+	public function read_brandinfo($file, $uri){
+		// check on data uri/url or title
+		$dom = new Dom;
+		$get_host = parse_url($uri, PHP_URL_HOST); 
+		$dom->setOptions([
+			'cleanupInput' => false,
+			'removeScripts' => true,
+			'htmlSpecialCharsDecode' => false,
+			'strict' => false,
+			'whitespaceTextNode' => false
+		]);
+		$dom->loadFromFile($file);
+		$title = $dom->find('title');
+		$found = false;
+		foreach($title as $t){
+			$get_value = $t->innerHtml;
+			if($get_value == $get_host || strpos($get_value, $get_host) !== false){
+				$found = true;
+			}
+		}
+
+		if($found){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+
 
 	// outter functions
 	function contains($str, array $arr)

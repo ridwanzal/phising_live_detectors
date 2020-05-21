@@ -84,32 +84,30 @@
                 </div>
             </div>
             <br/><br/>
-            <!-- <div class="row">
+            <div class="row">
                 <div class="col-lg-12 col-md-12">
+                    <h6 style="text-align:left;">Independent Feature Detection</h6>
                         <table  id="table3" class="table table-striped table-bordered responsive nowrap" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Scan Id</th>
                                     <th>URL</th>
                                     <th>Protocol</th>
-                                    <th>Favicon</th>
-                                    <th>Std Port</th>
                                     <th>Symbols</th>
                                     <th>Subdomain</th>
                                     <th>Length</th>
                                     <th>Dot</th>
                                     <th>Sensitive</th>
-                                    <th>Brand</th>
-                                    <th>Alert</th>
                                     <th>Login</th>
                                     <th>Empty</th>
-                                    <th>Length</th>
-                                    <th>Cons</th>
-                                    <th>JS List</th>
-                                    <th>Embed</th>
-                                    <th>External</th>
+                                    <th>Size</th>
+                                    <th>Consistency</th>
                                     <th>Redirect</th>
                                     <th>Iframe</th>
+                                    <th>Favicon</th>
+                                    <th>Double Top Domain</th>
+                                    <th>Shortlink</th>
+                                    <th>Cheap Domain</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -119,34 +117,32 @@
                                                 <td style="text-align:left;"><?php echo $item->scan_id; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_link; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_protocol; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->url_favicon; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->url_standard_port; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_symbol; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_subdomain; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_length; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_dot_total; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_sensitive_char; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->url_brandinfo; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->html_alert; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_login; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_empty_link; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_length; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_is_consist; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->html_js_list; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->html_string_embed; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->html_link_external_list; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_redirect; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_iframe; ?></td>
+                                                <td style="text-align:left;"><?php echo $item->html_favicon; ?></td>
+                                                <td style="text-align:left;"><?php echo $item->url_doubletopdomain; ?></td>
+                                                <td style="text-align:left;"><?php echo $item->url_shortlink; ?></td>
+                                                <td style="text-align:left;"><?php echo $item->url_domain_murah; ?></td>
                                             </tr>
                                             <?php } ?> 
                                     <?php } ?>
                             </tbody>
                         </table>
                 </div>
-            </div> -->
+            </div>
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                        <table  id="table3" class="table table-striped table-bordered responsive nowrap" style="width:100%">
+                        <h6 style="text-align:left;">Combine Feature Detection</h6>
+                        <table  id="table4" class="table table-striped table-bordered responsive nowrap" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Sc.Id</th>
@@ -164,7 +160,7 @@
                             </thead>
                             <tbody>
                             <?php if(isset($features)) {?>
-                                        <?php foreach($features as $item) { ?>
+                                        <?php foreach($smart_features as $item) { ?>
                                             <tr>
                                                 <td style="text-align:left;"><?php echo $item->scan_id; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->features_a; ?></td>
@@ -245,6 +241,23 @@
                 dom: 'Bfrtip',
                 buttons: [
                     {
+                        extend: 'csv',
+                        text: 'Export CSV',
+                        exportOptions: {
+                            modifier: {
+                            }
+                        }
+                    }
+                ]
+            } );
+
+
+            $('#table4').DataTable({
+                order: [[ 0, "desc" ]],
+                responsive : true,
+                dom: 'Bfrtip',
+                buttons: [
+                    {   
                         extend: 'csv',
                         text: 'Export CSV',
                         exportOptions: {
