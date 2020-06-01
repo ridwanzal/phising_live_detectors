@@ -113,6 +113,7 @@ class Maintwo extends CI_Controller {
 			);	
 			$this->db->insert('ph_features', $feature_data);
 
+			// count rules
 			$f_1 = $this->features_one($url);
 			$f_2 = $this->features_two($url);
 			$f_3 = $this->features_three($url);
@@ -121,7 +122,27 @@ class Maintwo extends CI_Controller {
 			$f_6 = $this->features_six($url,$file_path);
 			$f_7 = $this->features_seven($url);
 			$f_8 = $this->features_eight($url);
-			$arrayof_true = array($f_1,$f_2,$f_3,$f_4,$f_5,$f_6,$f_7,$f_8);
+
+			// count features
+			$b_f1 = $this->read_url_protocol($url);
+			$b_f2 = $this->cek_symbols($url);
+			$b_f3 = $this->cek_panjanguri($url);
+			$b_f4 = $this->cek_jumlahdot($url);
+			$b_f5 = $this->read_special_char($url);
+			$b_f6 = $this->cek_login($file_path);
+			$b_f7 = $this->read_html_empty_link($file_path);
+			$b_f8 = $this->read_html_filesize($url);
+			$b_f9 = $this->read_html_redirect($url);
+			$b_f10 = $this->read_html_iframe($url);
+			$b_f11 = $this->read_html_favicon($url);
+			$b_f12 = $this->cek_doubletopdomain($url);
+			$b_f13 = $this->cek_shortlink($url);
+			$b_f14 = $this->cek_domainmurah($url);
+			$b_f15 = $this->cek_jumlahpath($url);
+
+
+			// hitung berapa banyak fitur yang terdeteksi dan bernilai true (1)
+			$arrayof_true = array($b_f1,$b_f2,$b_f3,$b_f4,$b_f5,$b_f6,$b_f7,$b_f8,$b_f9,$b_f10,$b_f11,$b_f12,$b_f13,$b_f14,$b_f15);
 			$counts = array_count_values($arrayof_true);
 			$count_true =  $counts['1'];
 
