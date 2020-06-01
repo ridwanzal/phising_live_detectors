@@ -97,7 +97,6 @@ class Maintwo extends CI_Controller {
 				"url_link"=> "".$url,
 				"url_protocol" => "".$this->read_url_protocol($url),
 				"url_symbol" => "".$this->cek_symbols($url),
-				"url_subdomain"=> "".$this->read_url_subdomain($url),
 				"url_length" => "".$this->cek_panjanguri($url),
 				"url_dot_total" => "".$this->cek_jumlahdot($url),
 				"url_sensitive_char" => "".$this->read_special_char($url),
@@ -114,21 +113,51 @@ class Maintwo extends CI_Controller {
 			);	
 			$this->db->insert('ph_features', $feature_data);
 
+			$f_1 = $this->features_one($url);
+			$f_2 = $this->features_two($url);
+			$f_3 = $this->features_three($url);
+			$f_4 = $this->features_four($url);
+			$f_5 = $this->features_five($url);
+			$f_6 = $this->features_six($url,$file_path);
+			$f_7 = $this->features_seven($url);
+			$f_8 = $this->features_eight($url);
+			$arrayof_true = array($f_1,$f_2,$f_3,$f_4,$f_5,$f_6,$f_7,$f_8);
+			$counts = array_count_values($arrayof_true);
+			$count_true =  $counts['1'];
+
+			echo $count_true;
+
+			$f_9 = 0;
+			$f_10 = 0;
+			if($count_true >= 3){
+				$f_9 = 1;
+			}
+
+			if($count_true >= 4){
+				$f_10 = 1;
+			}
+
 			$feature_data2 = array(
 				"scan_id" => $id,
-				"features_a" => "".$this->features_one($url),
-				"features_b" => "".$this->features_two($url),
-				"features_c" => "".$this->features_three($url),
-				"features_d" => "".$this->features_four($url),
-				"features_e" => "".$this->features_five($url),
-				"features_f" => "".$this->features_six($url, $file_path),
-				"features_g" => "".$this->features_seven($url),
-				"features_h" => "".$this->features_eight($url),
-				"features_i" => "".$this->features_nine($url),
-				"features_j" => "".$this->features_ten($url),
+				"features_a" => "".$f_1,
+				"features_b" => "".$f_2,
+				"features_c" => "".$f_3,
+				"features_d" => "".$f_4,
+				"features_e" => "".$f_5,
+				"features_f" => "".$f_6,
+				"features_g" => "".$f_7,
+				"features_h" => "".$f_8,
+				"features_i" => "".$f_9,
+				"features_j" => "".$f_10
 			);
 			$this->db->insert('ph_smart_features', $feature_data2);
-			echo 'ok';
+
+			// $check = $this->db->affected_rows() > 0;
+			// if($check){
+			// 	$insert_id = $this->db->insert_id();
+			// 	$query = "SELECT * FROM ph_smart_features where id = $insert_id";
+			// }
+			// echo 'ok';
 		}
 
 	}
@@ -789,7 +818,7 @@ class Maintwo extends CI_Controller {
 	public function read_html_filesize($file){
 		$result = 0;
 		$size = filesize($file);
-		if($size < 102400){
+		if($size < 10240){
 			$result = 1;
 		}
 
@@ -962,6 +991,12 @@ class Maintwo extends CI_Controller {
 		}else{
 			false;
 		}
+	}
+
+	public function delete($id){
+        $this->db->where('scan_id', $id);
+		$this->db->delete('ph_scan');
+		redirect(base_url());
 	}
 
 

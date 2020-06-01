@@ -35,9 +35,9 @@
         <div class="row">
                 <div class="col-lg-12 col-md-12 col-xs-12">
                         <div class="input-group mb-3">
-                            <input class="form-control" id="inputurl" type="text" name="urls" placeholder="Masukkan URL/ Domain Website">
+                            <input class="form-control" id="inputurl" type="text" placeholder="Masukkan URL/ Domain Website">
                             <div class="input-group-append">
-                                <input name="analyze" type="submit" id="scanning" class="btn btn-outline-secondary" value="Scan Website"/> 
+                                <button id="scanning" class="btn btn-outline-secondary">Scan Website</button>
                             </div>
                         </div>
                 </div>
@@ -66,6 +66,7 @@
                                     <th>Link URL</th>
                                     <th>HTML File</th>
                                     <th>Tanggal ditambahkan</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,6 +77,7 @@
                                                 <td title="<?php echo $item->dataset_url; ?>" style="color:#3c70a4;text-align:left;"><?php echo substr($item->dataset_url, 0, 50);?></td>
                                                 <td title="<?php echo $item->dataset_html_file; ?>" style="color:#3c70a4;text-align:left;"><?php echo substr($item->dataset_html_file,0,50); ?></td>
                                                 <td style="text-align:left;"><?php echo $item->date_created; ?></td>
+                                                <td><a href="<?php echo base_url(); ?>maintwo/delete/<?php echo  $item->scan_id; ?>" class="btn btn-danger btn-sm">Delete</a></td>
                                             </tr>
                                             <?php } ?> 
                                     <?php } ?>
@@ -91,7 +93,6 @@
                             <thead>
                                 <tr>
                                     <th>Scan Id</th>
-                                    <th>URL</th>
                                     <th>Protocol</th>
                                     <th>Symbols</th>
                                     <th>Length</th>
@@ -114,7 +115,6 @@
                                         <?php foreach($features as $item) { ?>
                                             <tr>
                                                 <td style="text-align:left;"><?php echo $item->scan_id; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->url_link; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_protocol; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_symbol; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_length; ?></td>
@@ -185,37 +185,48 @@
 <script>
     $(document).ready(function(){   
             let scanbutton = $('#scanning');
-            scanbutton.on('click', function(){
-                let get_data_input = $('#inputurl').val();
-                let checking_input = get_data_input == "" ? true : false;
-                if(checking_input){
-                    alert('Data kosong');
-                }else{
-                    $('.loader').show();
-                    $('#status').show();
-                    $.ajax({
-                        url: "<?php echo base_url(); ?>scan", 
-                        method : 'POST',
-                        data : {
-                            urls : get_data_input
-                        },
-                        success: function(result){
-                            if(result == 'ok' || result){
-                                setTimeout(function(){
+            scanbutton.attr('disabled', true);
+            $('#inputurl').on('change', function(){
+                alert($(this).val());
+                    let get_data_input = $('#inputurl').val();
+                    let checking_input = get_data_input == "" ? true : false;
+                    if(checking_input){
+                        alert('Data kosong');
+                    }else{
+                        scanbutton.attr('disabled', false);
+                        scanbutton.on('click', function(){
+                            alert($('#inputurl').val());
+                            $('.loader').show();
+                            $('#status').show();
+                            $.ajax({
+                                url: "<?php echo base_url(); ?>scan", 
+                                method : 'POST',
+                                data : {
+                                    urls : $('#inputurl').val()
+                                },
+                                success: function(result){
+                                    if(result == 'ok' || result){
+                                        setTimeout(function(){
+                                            $('.loader').hide();
+                                            $('#status').hide();
+                                            $('#notif').show();
+                                            location.reload();
+                                        }, 3000);
+                                    }else{
+                                        console.log(result);
+                                    }
+                                },
+                                error : function(result){
+                                    console.log('gagal broh');
+                                    $('#status').text('Gagal');
                                     $('.loader').hide();
                                     $('#status').hide();
-                                    $('#notif').show();
-                                    location.reload();
-                                }, 3000);
-                            }
-                        },
-                        error : function(result){
-                            console.log('gagal broh');
-                            $('#status').text('Gagal');
-                        }
-                    });
-                }
+                                }
+                            });
+                        })
+                    }
             });
+
             
             $('#table1').DataTable( {
                 responsive : true,
