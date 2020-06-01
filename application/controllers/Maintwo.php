@@ -103,13 +103,13 @@ class Maintwo extends CI_Controller {
 				"html_login" => "".$this->cek_login($file_path),
 				"html_empty_link" => "".$this->read_html_empty_link($file_path),
 				"html_length" => "".$this->read_html_filesize($file_path),
-				"html_is_consist" => "".$this->read_consistency($file_path, $url),
 				"html_redirect" => "".$this->read_html_redirect($file_path),
 				"html_iframe" => "".$this->read_html_iframe($file_path),
 				"html_favicon" => "".$this->read_html_favicon($file_path),
 				"url_doubletopdomain" => "".$this->cek_doubletopdomain($file_path),
 				"url_shortlink" => "".$this->cek_shortlink($file_path),
 				"url_domain_murah" => "".$this->cek_domainmurah($file_path),
+				"url_totalpath" => "".$this->cek_jumlahpath($url)
 			);	
 			$this->db->insert('ph_features', $feature_data);
 
@@ -544,6 +544,7 @@ class Maintwo extends CI_Controller {
 	public function cek_jumlahpath($uri){
 		$split = explode ("/", $uri);
 		$pathtotal = sizeof($split);
+		$pathtotal = $pathtotal - 3;
 		if($pathtotal > 3){
 			return true;
 		}else{
@@ -554,8 +555,9 @@ class Maintwo extends CI_Controller {
 	//9
 	public function cek_jumlahdot($uri){
 		$split = explode (".", $uri);
-		$pathtotal = sizeof($split);
-		if($pathtotal > 3){
+		$dotttal = sizeof($split);
+		$dotttal = $dotttal - 1;
+		if($dotttal > 3){
 			return true;
 		}else{
 			return false;
@@ -604,6 +606,7 @@ class Maintwo extends CI_Controller {
 		$cek_ipaddress = $this->cek_ipaddress($domain);
 		$cek_panjanguri = $this->cek_panjanguri($domain);
 		$cek_doubletopdomain = $this->cek_doubletopdomain($domain);
+		$cek_jumlahdot = $this->cek_jumlahdot($domain);
 		$cek_domainmurah = $this->cek_domainmurah($domain);
 		$cek_doubletopdomain = $this->cek_doubletopdomain($domain);
 		$result = array(
@@ -612,7 +615,8 @@ class Maintwo extends CI_Controller {
 			'cek_panjanguri' => $cek_panjanguri,
 			'checkhttp' => $check_http,
 			'cek_doubletopdomain' => $cek_doubletopdomain,
-			'cek_domainmurah' => $cek_domainmurah	
+			'cek_domainmurah' => $cek_domainmurah,
+			'dottotal' => $cek_jumlahdot
 		);
 		echo json_encode($result);
 	}
@@ -870,7 +874,7 @@ class Maintwo extends CI_Controller {
 		$found = false;
 		foreach($a as $links){
 			$get_value = $links->getAttribute('rel');
-			if($get_value == 'shortcut icon'){
+			if($get_value == 'shortcut icon' || $get_value == 'icon'){
 				$found = false;
 			}else{
 				$found = true;

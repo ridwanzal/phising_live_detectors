@@ -101,13 +101,13 @@
                                     <th>Login</th>
                                     <th>Empty</th>
                                     <th>Size</th>
-                                    <th>Consistency</th>
                                     <th>Redirect</th>
                                     <th>Iframe</th>
                                     <th>Favicon</th>
                                     <th>Double Top Domain</th>
                                     <th>Shortlink</th>
                                     <th>Cheap Domain</th>
+                                    <th>Total Path</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -123,13 +123,13 @@
                                                 <td style="text-align:left;"><?php echo $item->html_login; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_empty_link; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_length; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->html_is_consist; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_redirect; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_iframe; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_favicon; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_doubletopdomain; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_shortlink; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_domain_murah; ?></td>
+                                                <td style="text-align:left;"><?php echo $item->url_totalpath; ?></td>
                                             </tr>
                                             <?php } ?> 
                                     <?php } ?>
@@ -185,47 +185,77 @@
 <script>
     $(document).ready(function(){   
             let scanbutton = $('#scanning');
-            scanbutton.attr('disabled', true);
-            $('#inputurl').on('change', function(){
-                alert($(this).val());
-                    let get_data_input = $('#inputurl').val();
-                    let checking_input = get_data_input == "" ? true : false;
-                    if(checking_input){
-                        alert('Data kosong');
-                    }else{
-                        scanbutton.attr('disabled', false);
-                        scanbutton.on('click', function(){
-                            alert($('#inputurl').val());
-                            $('.loader').show();
-                            $('#status').show();
-                            $.ajax({
-                                url: "<?php echo base_url(); ?>scan", 
-                                method : 'POST',
-                                data : {
-                                    urls : $('#inputurl').val()
-                                },
-                                success: function(result){
-                                    if(result == 'ok' || result){
-                                        setTimeout(function(){
-                                            $('.loader').hide();
-                                            $('#status').hide();
-                                            $('#notif').show();
-                                            location.reload();
-                                        }, 3000);
-                                    }else{
-                                        console.log(result);
-                                    }
-                                },
-                                error : function(result){
-                                    console.log('gagal broh');
-                                    $('#status').text('Gagal');
+            scanbutton.on('click', function(){
+                    // alert($('#inputurl').val());
+                    $('.loader').show();
+                    $('#status').show();
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>scan", 
+                        method : 'POST',
+                        data : {
+                            urls : $('#inputurl').val()
+                        },
+                        success: function(result){
+                            if(result == 'ok' || result){
+                                setTimeout(function(){
                                     $('.loader').hide();
                                     $('#status').hide();
-                                }
-                            });
-                        })
-                    }
-            });
+                                    $('#notif').show();
+                                    location.reload();
+                                }, 3000);
+                            }else{
+                                console.log(result);
+                            }
+                        },
+                        error : function(result){
+                            console.log('gagal broh');
+                            $('#status').text('Gagal');
+                            $('.loader').hide();
+                            $('#status').hide();
+                        }
+                    });
+                });
+            // scanbutton.attr('disabled', true);
+            // $('#inputurl').on('change', function(){
+            //     alert($(this).val());
+            //         let get_data_input = $('#inputurl').val();
+            //         let checking_input = get_data_input == "" ? true : false;
+            //         if(checking_input){
+            //             alert('Data kosong');
+            //         }else{
+            //             scanbutton.attr('disabled', false);
+            //             scanbutton.on('click', function(){
+            //                 alert($('#inputurl').val());
+            //                 $('.loader').show();
+            //                 $('#status').show();
+            //                 $.ajax({
+            //                     url: "<?php echo base_url(); ?>scan", 
+            //                     method : 'POST',
+            //                     data : {
+            //                         urls : $('#inputurl').val()
+            //                     },
+            //                     success: function(result){
+            //                         if(result == 'ok' || result){
+            //                             setTimeout(function(){
+            //                                 $('.loader').hide();
+            //                                 $('#status').hide();
+            //                                 $('#notif').show();
+            //                                 location.reload();
+            //                             }, 3000);
+            //                         }else{
+            //                             console.log(result);
+            //                         }
+            //                     },
+            //                     error : function(result){
+            //                         console.log('gagal broh');
+            //                         $('#status').text('Gagal');
+            //                         $('.loader').hide();
+            //                         $('#status').hide();
+            //                     }
+            //                 });
+            //             });
+            //         }
+            // });
 
             
             $('#table1').DataTable( {
