@@ -146,7 +146,7 @@ class Maintwo extends CI_Controller {
 			$counts = array_count_values($arrayof_true);
 			$count_true =  $counts['1'];
 
-			echo $count_true;
+			// echo $count_true;
 
 			$f_9 = 0;
 			$f_10 = 0;
