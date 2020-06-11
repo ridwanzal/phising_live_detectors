@@ -465,7 +465,10 @@ class Maintwo extends CI_Controller {
 			$word1 = 'login';
 			$word2 = 'signin';
 			$word3 = "Sign";
-			if(strpos($get_value, $word1) !== false || strpos($get_value, $word2) !== false || strpos($get_value, $word3) !== false){
+			$word4 = 'log';
+			$word5 = 'log in';
+			$word6 = "sign in";
+			if(strpos($get_value, $word1) !== false || strpos($get_value, $word2) !== false || strpos($get_value, $word3) !== false  || strpos($get_value, $word4) !== false || strpos($get_value, $word5) !== false ||  strpos($get_value, $word6 ) !== false ){
 				$found = true;
 			} else{
 				$found = false;
@@ -497,7 +500,10 @@ class Maintwo extends CI_Controller {
 			$word1 = 'login';
 			$word2 = 'signin';
 			$word3 = "Sign";
-			if(strpos($get_value, $word1) !== false || strpos($get_value, $word2) !== false || strpos($get_value, $word3) !== false){
+			$word4 = 'log';
+			$word5 = 'log in';
+			$word6 = "sign in";
+			if(strpos($get_value, $word1) !== false || strpos($get_value, $word2) !== false || strpos($get_value, $word3) !== false  || strpos($get_value, $word4) !== false || strpos($get_value, $word5) !== false ||  strpos($get_value, $word6 ) !== false ){
 				$found = true;
 			} else{
 				$found = false;
@@ -540,7 +546,7 @@ class Maintwo extends CI_Controller {
 
 
 	public function cek_shortlink($uri){
-		$array_of_shortlinkurl = array('bit.ly', 'tinyurl', 'rebrandly', 'ink', 'yourls');
+		$array_of_shortlinkurl = array('bit.ly', 'tinyurl', 'rebrandly', 'ink', 'yourls','pay', 'payrol', 'bonus', 'kuota', 'gratis', 'discount', 'free', 'exe', 'pdf');
 		$contains = $this->contains($uri, $array_of_shortlinkurl);
 		if($contains){
 			return true;
@@ -566,7 +572,7 @@ class Maintwo extends CI_Controller {
 		$split = explode ("/", $uri);
 		$pathtotal = sizeof($split);
 		$pathtotal = $pathtotal - 3;
-		if($pathtotal > 3){
+		if($pathtotal > 1){
 			return true;
 		}else{
 			return false;
@@ -645,7 +651,7 @@ class Maintwo extends CI_Controller {
 	public function read_url_length($uri){
 		$check = strlen($uri);
 		$result = 0;
-		if($check > 75){
+		if($check > 40){
 			$result = 1;
 		}
 		return $result;
