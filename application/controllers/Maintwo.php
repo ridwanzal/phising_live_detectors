@@ -426,7 +426,7 @@ class Maintwo extends CI_Controller {
 	public function cek_panjanguri($uri){
 		$result = false;
 		$check = strlen($uri);
-		if($check > 75){
+		if($check > 40){
 			$result = true;
 		}
 
@@ -546,7 +546,7 @@ class Maintwo extends CI_Controller {
 
 
 	public function cek_shortlink($uri){
-		$array_of_shortlinkurl = array('bit.ly', 'tinyurl', 'rebrandly', 'ink', 'yourls','pay', 'payrol', 'bonus', 'kuota', 'gratis', 'discount', 'free', 'exe', 'pdf');
+		$array_of_shortlinkurl = array('bit.ly', 'tinyurl', 'rebrandly', 'ink', 'yourls');
 		$contains = $this->contains($uri, $array_of_shortlinkurl);
 		if($contains){
 			return true;
@@ -558,7 +558,7 @@ class Maintwo extends CI_Controller {
 
 
 	public function cek_sensitiveinfo($uri){
-		$array_of_sensitive_char = array('login', 'auth', 'signin', 'signin', 'yourls');
+		$array_of_sensitive_char = array('login', 'auth', 'signin', 'signin', 'yourls','pay', 'payrol', 'bonus', 'kuota', 'gratis', 'discount', 'free', 'exe', 'pdf');
 		$contains = $this->contains($uri, $array_of_sensitive_char);
 		if($contains){
 			return true;
