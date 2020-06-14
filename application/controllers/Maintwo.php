@@ -124,27 +124,27 @@ class Maintwo extends CI_Controller {
 			$f_8 = $this->features_eight($url);
 
 			// count features
-			$b_f1 = $this->read_url_protocol($url);
-			$b_f2 = $this->cek_symbols($url);
-			$b_f3 = $this->cek_panjanguri($url);
-			$b_f4 = $this->cek_jumlahdot($url);
-			$b_f5 = $this->read_special_char($url);
-			$b_f6 = $this->cek_login($file_path);
-			$b_f7 = $this->read_html_empty_link($file_path);
-			$b_f8 = $this->read_html_filesize($url);
-			$b_f9 = $this->read_html_redirect($url);
-			$b_f10 = $this->read_html_iframe($url);
-			$b_f11 = $this->read_html_favicon($url);
-			$b_f12 = $this->cek_doubletopdomain($url);
-			$b_f13 = $this->cek_shortlink($url);
-			$b_f14 = $this->cek_domainmurah($url);
-			$b_f15 = $this->cek_jumlahpath($url);
+			$b_f1 = $this->read_url_protocol($url) == true ? 1 : 0;
+			$b_f2 = $this->cek_symbols($url) == true ? 1 : 0;
+			$b_f3 = $this->cek_panjanguri($url)  == true ? 1 : 0;
+			$b_f4 = $this->cek_jumlahdot($url) == true ? 1 : 0;
+			$b_f5 = $this->read_special_char($url)  == true ? 1 : 0;
+			$b_f6 = $this->cek_login($file_path)  == true ? 1 : 0;
+			$b_f7 = $this->read_html_empty_link($file_path)  == true ? 1 : 0;
+			$b_f8 = $this->read_html_filesize($file_path)  == true ? 1 : 0;
+			$b_f9 = $this->read_html_redirect($url)  == true ? 1 : 0;
+			$b_f10 = $this->read_html_iframe($url)  == true ? 1 : 0;
+			$b_f11 = $this->read_html_favicon($url)  == true ? 1 : 0;
+			$b_f12 = $this->cek_doubletopdomain($url)  == true ? 1 : 0;
+			$b_f13 = $this->cek_shortlink($url) == true ? 1 : 0;
+			$b_f14 = $this->cek_domainmurah($url) == true ? 1 : 0 ;
+			$b_f15 = $this->cek_jumlahpath($url) == true ? 1 : 0;
 
 
 			// hitung berapa banyak fitur yang terdeteksi dan bernilai true (1)
 			$arrayof_true = array($b_f1,$b_f2,$b_f3,$b_f4,$b_f5,$b_f6,$b_f7,$b_f8,$b_f9,$b_f10,$b_f11,$b_f12,$b_f13,$b_f14,$b_f15);
 			$counts = array_count_values($arrayof_true);
-			$count_true =  $counts['1'];
+			$count_true =  $counts[1];
 
 			// echo $count_true;
 
@@ -173,12 +173,14 @@ class Maintwo extends CI_Controller {
 			);
 			$this->db->insert('ph_smart_features', $feature_data2);
 
+			// echo json_encode($arrayof_true);
+
 			// $check = $this->db->affected_rows() > 0;
 			// if($check){
 			// 	$insert_id = $this->db->insert_id();
 			// 	$query = "SELECT * FROM ph_smart_features where id = $insert_id";
 			// }
-			// echo 'ok';
+			echo 'ok';
 		}
 
 	}
@@ -437,7 +439,7 @@ class Maintwo extends CI_Controller {
 	// 4
 	public function cek_domainmurah($uri){
 		// cek daftar tld dengan harga sewa yang murah
-		$array = array("tech","online", "xyz", "red", "blue", "domain", "my.id", "website", "info");
+		$array = array(".tech",".online", ".xyz", ".red", ".blue", ".domain", ".my.id", ".website", ".info");
 		$contains = $this->contains($uri, $array);
 		if($contains){
 			return true;
@@ -851,6 +853,8 @@ class Maintwo extends CI_Controller {
 		$size = filesize($file);
 		if($size < 10240){
 			$result = 1;
+		}else{
+			$result = 0;
 		}
 
 		return $result;

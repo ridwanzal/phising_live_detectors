@@ -197,11 +197,12 @@
                         },
                         success: function(result){
                             if(result == 'ok' || result){
+                                console.log(result);
                                 setTimeout(function(){
                                     $('.loader').hide();
                                     $('#status').hide();
                                     $('#notif').show();
-                                    location.reload();
+                                    // location.reload();
                                 }, 3000);
                             }else{
                                 console.log(result);
