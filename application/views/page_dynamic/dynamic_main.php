@@ -202,7 +202,7 @@
                                     $('.loader').hide();
                                     $('#status').hide();
                                     $('#notif').show();
-                                    // location.reload();
+                                    location.reload();
                                 }, 3000);
                             }else{
                                 console.log(result);
