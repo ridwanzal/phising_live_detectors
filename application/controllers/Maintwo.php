@@ -574,7 +574,7 @@ class Maintwo extends CI_Controller {
 		$split = explode ("/", $uri);
 		$pathtotal = sizeof($split);
 		$pathtotal = $pathtotal - 3;
-		if($pathtotal > 1){
+		if($pathtotal >= 1){
 			return true;
 		}else{
 			return false;
@@ -638,6 +638,7 @@ class Maintwo extends CI_Controller {
 		$cek_jumlahdot = $this->cek_jumlahdot($domain);
 		$cek_domainmurah = $this->cek_domainmurah($domain);
 		$cek_doubletopdomain = $this->cek_doubletopdomain($domain);
+		$jumlah_path = $this->cek_jumlahpath_test($domain);
 		$result = array(
 			'domain' => $domain,
 			'cekipaddress' => $cek_ipaddress,
@@ -645,9 +646,22 @@ class Maintwo extends CI_Controller {
 			'checkhttp' => $check_http,
 			'cek_doubletopdomain' => $cek_doubletopdomain,
 			'cek_domainmurah' => $cek_domainmurah,
-			'dottotal' => $cek_jumlahdot
+			'dottotal' => $cek_jumlahdot,
+			'jumlah_path' => $jumlah_path
 		);
 		echo json_encode($result);
+	}
+
+	public function cek_jumlahpath_test($uri){
+		$split = explode ("/", $uri);
+		$pathtotal = sizeof($split);
+		$pathtotal = $pathtotal - 3;
+		// if($pathtotal > 1){
+		// 	return true;
+		// }else{
+		// 	return false;
+		// }
+		return $pathtotal;
 	}
 
 	public function read_url_length($uri){
