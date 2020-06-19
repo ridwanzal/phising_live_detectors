@@ -59,7 +59,7 @@
             <br/>
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                        <table  id="table1" class="table table-striped table-bordered responsive nowrap" style="width:100%">
+                        <table  id="table1" class="table table-striped table-bordered responsive wrap" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Scan Id</th>
