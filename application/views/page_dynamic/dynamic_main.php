@@ -74,8 +74,8 @@
                                         <?php foreach($scan as $item) { ?>
                                             <tr>
                                                 <td style="background:#ececec;text-align:left;"><?php echo $item->scan_id; ?></td>
-                                                <td title="<?php echo $item->dataset_url; ?>" style="color:#3c70a4;text-align:left;"><?php echo substr($item->dataset_url, 0, 50);?></td>
-                                                <td title="<?php echo $item->dataset_html_file; ?>" style="color:#3c70a4;text-align:left;"><?php echo substr($item->dataset_html_file,0,50); ?></td>
+                                                <td title="<?php echo $item->dataset_url; ?>" style="color:#3c70a4;text-align:left;"><?php echo $item->dataset_url;?></td>
+                                                <td title="<?php echo $item->dataset_html_file; ?>" style="color:#3c70a4;text-align:left;"><?php echo $item->dataset_html_file; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->date_created; ?></td>
                                                 <td><a href="<?php echo base_url(); ?>maintwo/delete/<?php echo  $item->scan_id; ?>" class="btn btn-danger btn-sm">Delete</a></td>
                                             </tr>
