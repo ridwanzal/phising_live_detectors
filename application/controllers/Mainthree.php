@@ -630,7 +630,7 @@ class Mainthree extends CI_Controller {
 		$split = explode ("/", $uri);
 		$pathtotal = sizeof($split);
 		$pathtotal = $pathtotal - 3;
-		if($pathtotal >= 2){
+		if($pathtotal > 2){
 			return true;
 		}else{
 			return false;
