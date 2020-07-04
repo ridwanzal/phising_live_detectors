@@ -77,7 +77,7 @@
                                                 <td title="<?php echo $item->dataset_url; ?>" style="color:#3c70a4;text-align:left;"><?php echo $item->dataset_url;?></td>
                                                 <td title="<?php echo $item->dataset_html_file; ?>" style="color:#3c70a4;text-align:left;"><?php echo $item->dataset_html_file; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->date_created; ?></td>
-                                                <td><a href="<?php echo base_url(); ?>maintwo/delete/<?php echo  $item->scan_id; ?>" class="btn btn-danger btn-sm">Delete</a></td>
+                                                <td><a href="<?php echo base_url(); ?>mainthree/delete/<?php echo  $item->scan_id; ?>" class="btn btn-danger btn-sm">Delete</a></td>
                                             </tr>
                                             <?php } ?> 
                                     <?php } ?>
@@ -144,33 +144,24 @@
                             <thead>
                                 <tr>
                                     <th>Sc.Id</th>
-                                    <th>FeatureA</th>
-                                    <th>FeatureB</th>
-                                    <th>FeatureC</th>
-                                    <th>FeatureD</th>
-                                    <th>FeatureE</th>
-                                    <th>FeatureF</th>
-                                    <th>FeatureG</th>
-                                    <th>FeatureH</th>
-                                    <th>FeatureI</th>
-                                    <th>FeatureJ</th>
-                                </tr>
+                                    <th>Rule A</th>
+                                    <th>Rule B</th>
+                                    <th>Rule C</th>
+                                    <th>Rule D</th>
+                                    <th>Rule E</th>
+                                    <th>Result</th>
                             </thead>
                             <tbody>
                             <?php if(isset($features)) {?>
                                         <?php foreach($smart_features as $item) { ?>
                                             <tr>
                                                 <td style="text-align:left;"><?php echo $item->scan_id; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->features_a; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->features_b; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->features_c; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->features_d; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->features_e; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->features_f; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->features_g; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->features_h; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->features_i; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->features_j; ?></td>
+                                                <td style="text-align:left;"><?php echo $item->rule_a; ?></td>
+                                                <td style="text-align:left;"><?php echo $item->rule_b; ?></td>
+                                                <td style="text-align:left;"><?php echo $item->rule_c; ?></td>
+                                                <td style="text-align:left;"><?php echo $item->rule_d; ?></td>
+                                                <td style="text-align:left;"><?php echo $item->rule_e; ?></td>
+                                                <td style="text-align:left;"><?php echo $item->result; ?></td>
                                             </tr>
                                             <?php } ?> 
                                     <?php } ?>
@@ -196,6 +187,7 @@
                             urls : $('#inputurl').val()
                         },
                         success: function(result){
+                            console.log(result);
                             if(result == 'ok' || result){
                                 console.log(result);
                                 setTimeout(function(){
@@ -203,7 +195,7 @@
                                     $('#status').hide();
                                     $('#notif').show();
                                     location.reload();
-                                }, 3000);
+                                }, 1000);
                             }else{
                                 console.log(result);
                             }

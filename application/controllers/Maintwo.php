@@ -109,7 +109,8 @@ class Maintwo extends CI_Controller {
 				"url_doubletopdomain" => "".$this->cek_doubletopdomain($file_path),
 				"url_shortlink" => "".$this->cek_shortlink($file_path),
 				"url_domain_murah" => "".$this->cek_domainmurah($file_path),
-				"url_totalpath" => "".$this->cek_jumlahpath($url)
+				"url_totalpath" => "".$this->cek_jumlahpath($url),
+				"url_toptarget" => "".$this->read_toptarget($url)
 			);	
 			$this->db->insert('ph_features', $feature_data);
 
@@ -139,6 +140,7 @@ class Maintwo extends CI_Controller {
 			$b_f13 = $this->cek_shortlink($url) == true ? 1 : 0;
 			$b_f14 = $this->cek_domainmurah($url) == true ? 1 : 0 ;
 			$b_f15 = $this->cek_jumlahpath($url) == true ? 1 : 0;
+			$b_f16 = $this->cek_jumlahpath($url) == true ? 1 : 0;
 
 
 			// hitung berapa banyak fitur yang terdeteksi dan bernilai true (1)
@@ -439,7 +441,9 @@ class Maintwo extends CI_Controller {
 	// 4
 	public function cek_domainmurah($uri){
 		// cek daftar tld dengan harga sewa yang murah
-		$array = array(".tech",".online", ".xyz", ".red", ".blue", ".domain", ".my.id", ".website", ".info");
+		$array = array(".tech",".online", ".xyz", ".red", ".blue", ".domain", ".my.id",
+		".website", ".info",".host",".life", ".world", ".ml", "000webhostapp.com",
+		".yolasite.com", "webly.com", ".webstarterz.com", ".appsopt.com");
 		$contains = $this->contains($uri, $array);
 		if($contains){
 			return true;
@@ -535,9 +539,11 @@ class Maintwo extends CI_Controller {
 		$array8 = array(".jp.com",".jp.net", ".jp.id", ".jp.us", ".jp.org", ".jp.info", ".jp.online", ".jp.jp",".jp.cn",".jp.xyz",".jp.co");
 		$array9 = array(".cn.com",".cn.net", ".cn.id", ".cn.us", ".cn.org", ".cn.info", ".cn.online", ".cn.jp",".cn.cn",".cn.xyz",".cn.co");
 		$array10 = array(".xyz.com",".xyz.net", ".xyz.id", ".xyz.us", ".xyz.org", ".xyz.info", ".xyz.online", ".xyz.jp",".xyz.cn",".xyz.xyz",".xyz.co");
-		$array11 = array(".co.com",".co.net", ".co.id", ".co.us", ".co.org", ".co.info", ".co.online", ".co.jp",".co.cn",".co.xyz",".co.co");
+		$array12 = array(".com",".net", ".id",".us", ".org", ".jp", ".info", ".online", ".xyz", ".co", ".cn",".ml",".app",".club");
+		// string = asdasd.com.adasdsad.net 
+		// ['com', 'net', 'id'];
 
-		$array_all = array_merge($array1,$array2,$array3,$array4,$array5,$array6,$array7,$array8,$array9,$array10,$array11);
+		$array_all = array_merge($array1,$array2,$array3,$array4,$array5,$array6,$array7,$array8,$array9,$array10,$array12);
 		$contains = $this->contains($uri, $array_all);
 		if($contains){
 			return true;
@@ -570,11 +576,12 @@ class Maintwo extends CI_Controller {
 	}
 
 	// 8
+	// http://scafol.id/data/
 	public function cek_jumlahpath($uri){
 		$split = explode ("/", $uri);
 		$pathtotal = sizeof($split);
 		$pathtotal = $pathtotal - 3;
-		if($pathtotal >= 1){
+		if($pathtotal >= 2){
 			return true;
 		}else{
 			return false;
@@ -582,15 +589,26 @@ class Maintwo extends CI_Controller {
 	}
 
 	//9
+	// http://scafol.com/adssajdasd.sdadasd.asdsad n+1 = 4
 	public function cek_jumlahdot($uri){
-		$split = explode (".", $uri);
-		$dotttal = sizeof($split);
+		// $split = explode (".", $uri);
+		// $dotttal = sizeof($split); // ['http://scafol', 'com/adssajdasd']
+		// $dotttal = $dotttal - 1;
+		// if($dotttal > 3){ 
+		// 	return true;
+		// }else{
+		// 	return false;
+		// }
+		$parsed_url = parse_url($uri, PHP_URL_HOST); // scafol.co.id
+		$split = explode (".", $parsed_url);
+		$dotttal = sizeof($split); // ['http://scafol', 'com/adssajdasd']
 		$dotttal = $dotttal - 1;
-		if($dotttal > 3){
+		if($dotttal > 3){ 
 			return true;
 		}else{
 			return false;
 		}
+
 	}
 
 	// 10
@@ -674,8 +692,17 @@ class Maintwo extends CI_Controller {
 	}
 
 
-
-
+	public function read_toptarget($uri){
+		$result = 0 ;
+		$toptarget = array("amazon", "office", "instagram",
+							"facebook","bank","netflix", "paypal", "banco", "linkedin", "ebay","alibaba",
+							"onedrive", "outlook", "jpmorgan","yahoo","adobe");
+		if (in_array($uri, $toptarget))
+		{
+			$result = 1 ;
+		}
+		return $result;
+	}
 	// Old modules
 
 	public function read_html_login($file){
@@ -960,14 +987,18 @@ class Maintwo extends CI_Controller {
 		return $result;
 	}
 
-
+	/* 
+	“secure”,
+	“banking”,
+	”gratis”,”kuotagratis”,”discount”, “bokep”, “porn”, “money”, “pay”
+	*/
 	public function read_special_char($uri){
 		$result = 0 ;
-		$vocab_phishing = array("secure", 
-								 "account",
-								 "login", "ebayisapi",
-								 "signin", "banking", "confirm");
-			if (in_array("uri", $vocab_phishing))
+		$vocab_phishing = array("secure","banking","gratis",
+								 "kuotagratis", "discount",
+								 "porn", "bokep", "money", "pay"
+								 );
+			if (in_array($uri, $vocab_phishing))
 			{
 				$result = 1 ;
 			}
@@ -977,7 +1008,8 @@ class Maintwo extends CI_Controller {
 
 	public function read_url_symbol($uri){
 		$result = 0 ;
-		if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $uri))
+		$urihost = parse_url($uri, PHP_URL_HOST); // hostname : scafol.com
+		if (preg_match('/[-]/', $urihost))
 			{
 				$result = 1;
 			// one or more of the 'special characters' found in $string
