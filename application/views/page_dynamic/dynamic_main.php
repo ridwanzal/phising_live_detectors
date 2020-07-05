@@ -99,10 +99,8 @@
                                     <th>Dot</th>
                                     <th>Sensitive</th>
                                     <th>Login</th>
-                                    <th>Empty</th>
                                     <th>Size</th>
                                     <th>Redirect</th>
-                                    <th>Iframe</th>
                                     <th>Favicon</th>
                                     <th>Double Top Domain</th>
                                     <th>Shortlink</th>
@@ -121,10 +119,8 @@
                                                 <td style="text-align:left;"><?php echo $item->url_dot_total; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_sensitive_char; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_login; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->html_empty_link; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_length; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_redirect; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->html_iframe; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_favicon; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_doubletopdomain; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_shortlink; ?></td>
