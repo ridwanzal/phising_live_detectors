@@ -630,9 +630,9 @@ class Mainthree extends CI_Controller {
 
 		$test =  $x - 1;
 		if($test > 1){
-			return $test;
+			return true;
 		}else{
-			return $test;
+			return false;
 		}
 
 	}
