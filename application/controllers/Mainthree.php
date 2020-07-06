@@ -308,7 +308,7 @@ class Mainthree extends CI_Controller {
 
 	public function features_four($uri){
 		$a = $this->cek_http($uri);
-		$b = $this->cek_doubletopdomain($uri);
+		$b = $this->cek_doubletopdomainfix($uri);
 
 		if($a && $b){
 			return 1;
