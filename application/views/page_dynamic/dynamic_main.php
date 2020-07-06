@@ -100,11 +100,12 @@
                                     <th>Sensitive</th>
                                     <th>Login</th>
                                     <th>Size</th>
-                                    <th>Redirect</th>
                                     <th>Favicon</th>
                                     <th>Double Top Domain</th>
                                     <th>Shortlink</th>
                                     <th>Cheap Domain</th>
+                                    <th>Cheap Hosting</th>
+                                    <th>Top Target</th>
                                     <th>Total Path</th>
                                 </tr>
                             </thead>
@@ -120,11 +121,12 @@
                                                 <td style="text-align:left;"><?php echo $item->url_sensitive_char; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_login; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_length; ?></td>
-                                                <td style="text-align:left;"><?php echo $item->html_redirect; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->html_favicon; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_doubletopdomain; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_shortlink; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_domain_murah; ?></td>
+                                                <td style="text-align:left;"><?php echo $item->url_hosting_murah; ?></td>
+                                                <td style="text-align:left;"><?php echo $item->url_toptarget; ?></td>
                                                 <td style="text-align:left;"><?php echo $item->url_totalpath; ?></td>
                                             </tr>
                                             <?php } ?> 

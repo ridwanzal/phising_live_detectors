@@ -103,12 +103,12 @@ class Mainthree extends CI_Controller {
 				"html_login" => "".$this->cek_login($file_path),
 				"html_empty_link" => "".$this->read_html_empty_link($file_path),
 				"html_length" => "".$this->read_html_filesize($file_path),
-				"html_redirect" => "".$this->read_html_redirect($file_path),
 				"html_iframe" => "".$this->read_html_iframe($file_path),
 				"html_favicon" => "".$this->read_html_favicon($file_path),
 				"url_doubletopdomain" => "".$this->cek_doubletopdomain($file_path),
 				"url_shortlink" => "".$this->cek_shortlink($file_path),
 				"url_domain_murah" => "".$this->cek_domainmurah($file_path),
+				"url_hosting_murah" => "".$this->cek_hostingmurah($file_path),
 				"url_totalpath" => "".$this->cek_jumlahpath($url),
 				"url_toptarget" => "".$this->read_toptarget($url)
 			);	
@@ -491,8 +491,18 @@ class Mainthree extends CI_Controller {
 	public function cek_domainmurah($uri){
 		// cek daftar tld dengan harga sewa yang murah
 		$array = array(".tech",".online", ".xyz", ".red", ".blue", ".domain", ".my.id",
-		".website", ".info",".host",".life", ".world", ".ml", "000webhostapp.com",
-		".yolasite.com", "webly.com", ".webstarterz.com", ".appsopt.com");
+		".website", ".info",".host",".life", ".world", ".ml");
+		$contains = $this->contains($uri, $array);
+		if($contains){
+			return true;
+		}else{	
+			return false;
+		}
+	}
+
+	public function cek_hostingmurah($uri){
+		// cek daftar tld dengan harga sewa yang murah
+		$array = array("000webhostapp.com", ".yolasite.com", "webly.com", ".webstarterz.com", ".appspot.com");
 		$contains = $this->contains($uri, $array);
 		if($contains){
 			return true;
@@ -578,6 +588,10 @@ class Mainthree extends CI_Controller {
 			format sebagai berikut .com.co
 		*/
 		// cek daftar tld dengan harga sewa yang murah
+
+		/*
+			satu / 2 terdeteksi di count push to array [], count size nyo.
+		*/
 		$array1 = array(".com.com",".com.net", ".com.id", ".com.us", ".com.org", ".com.info", ".com.online", ".com.jp",".com.cn",".com.xyz",".com.co");
 		$array2 = array(".net.com",".net.net", ".net.id", ".net.us", ".net.org", ".net.info", ".net.online", ".net.jp",".net.cn",".net.xyz",".net.co");
 		$array3 = array(".id.com",".id.net", ".id.id", ".id.us", ".id.org", ".id.info", ".id.online", ".id.jp",".id.cn",".id.xyz",".id.co");
@@ -588,22 +602,46 @@ class Mainthree extends CI_Controller {
 		$array8 = array(".jp.com",".jp.net", ".jp.id", ".jp.us", ".jp.org", ".jp.info", ".jp.online", ".jp.jp",".jp.cn",".jp.xyz",".jp.co");
 		$array9 = array(".cn.com",".cn.net", ".cn.id", ".cn.us", ".cn.org", ".cn.info", ".cn.online", ".cn.jp",".cn.cn",".cn.xyz",".cn.co");
 		$array10 = array(".xyz.com",".xyz.net", ".xyz.id", ".xyz.us", ".xyz.org", ".xyz.info", ".xyz.online", ".xyz.jp",".xyz.cn",".xyz.xyz",".xyz.co");
-		$array12 = array(".com",".net", ".id",".us", ".org", ".jp", ".info", ".online", ".xyz", ".co", ".cn",".ml",".app",".club");
+		$array12 = array(".com",".net", ".id",".us", ".org", ".jp", ".info", ".online", ".xyz", ".co", ".cn",".ml",".app",".club", ".ru", ".top", ".io", ".weebly.com", ".club", ".it", ".ir", ".cn",
+						 ".cz", ".br");
 		// string = asdasd.com.adasdsad.net 
 		// ['com', 'net', 'id'];
 
 		$array_all = array_merge($array1,$array2,$array3,$array4,$array5,$array6,$array7,$array8,$array9,$array10,$array12);
 		$contains = $this->contains($uri, $array_all);
-		if($contains > 1){
+		// contains return bool
+		if($contains){
 			return true;
 		}else{	
 			return false;
 		}
 	}
 
+	//
+	public function cek_doubletopdomainfix($uri){
+		$parsed_url = parse_url($uri, PHP_URL_HOST); // scafol.co.id
+		$split = explode (".", $parsed_url);
+		$arrays = array("com","net", "id","us", "org", "jp", "info", "online", "xyz", "co", "cn","ml","app","club", "ru", "top", "io", "weebly.com", "club", "it", "ir", "cn",
+		"cz", "br");
+		$x = 0;
+		foreach($arrays as $a) {
+			if (stripos($parsed_url, $a) !== false){
+				$x = $x + 1;
+			}
+		}
+
+		$test =  $x - 1;
+		if($test > 1){
+			return true;
+		}else{
+			return false;
+		}
+
+	}
+
 
 	public function cek_shortlink($uri){
-		$array_of_shortlinkurl = array('bit.ly', 'tinyurl', 'rebrandly', 'ink', 'yourls');
+		$array_of_shortlinkurl = array('bit.ly', 'tinyurl', 'rebrandly', 'ink', 'yourls', 'bit.do');
 		$contains = $this->contains($uri, $array_of_shortlinkurl);
 		if($contains){
 			return true;
@@ -704,8 +742,11 @@ class Mainthree extends CI_Controller {
 		$cek_doubletopdomain = $this->cek_doubletopdomain($domain);
 		$cek_jumlahdot = $this->cek_jumlahdot($domain);
 		$cek_domainmurah = $this->cek_domainmurah($domain);
-		$cek_doubletopdomain = $this->cek_doubletopdomain($domain);
 		$jumlah_path = $this->cek_jumlahpath_test($domain);
+		$cek_porn = $this->read_special_char($domain);
+		$toptarget = $this->read_toptarget($domain);
+		$cek_hostingmurah = $this->cek_hostingmurah($domain);
+		$cek_topdomainfix = $this->cek_doubletopdomainfix($domain);
 		$result = array(
 			'domain' => $domain,
 			'cekipaddress' => $cek_ipaddress,
@@ -713,8 +754,12 @@ class Mainthree extends CI_Controller {
 			'checkhttp' => $check_http,
 			'cek_doubletopdomain' => $cek_doubletopdomain,
 			'cek_domainmurah' => $cek_domainmurah,
+			'cek_hostingmurah' => $cek_hostingmurah,
 			'dottotal' => $cek_jumlahdot,
-			'jumlah_path' => $jumlah_path
+			'jumlah_path' => $jumlah_path,
+			'porn' => $cek_porn,
+			'toptarget' => $toptarget,
+			'cek_doubletopdomainfix' => $cek_topdomainfix
 		);
 		echo json_encode($result);
 	}
@@ -742,15 +787,15 @@ class Mainthree extends CI_Controller {
 
 
 	public function read_toptarget($uri){
-		$result = 0 ;
-		$toptarget = array("amazon", "office", "instagram",
-							"facebook","bank","netflix", "paypal", "banco", "linkedin", "ebay","alibaba",
-							"onedrive", "outlook", "jpmorgan","yahoo","adobe");
-		if (in_array($uri, $toptarget))
-		{
-			$result = 1 ;
+		$array_of_sensitive_char =  array("amazon", "office", "instagram",
+		"facebook","bank","netflix", "paypal", "banco", "linkedin", "ebay","alibaba",
+		"onedrive", "outlook", "jpmorgan","yahoo","adobe");
+		$contains = $this->contains($uri, $array_of_sensitive_char);
+		if($contains){
+			return 1;
+		}else{
+			return 0;
 		}
-		return $result;
 	}
 	// Old modules
 
@@ -1042,16 +1087,29 @@ class Mainthree extends CI_Controller {
 	”gratis”,”kuotagratis”,”discount”, “bokep”, “porn”, “money”, “pay”
 	*/
 	public function read_special_char($uri){
-		$result = 0 ;
-		$vocab_phishing = array("secure","banking","gratis",
-								 "kuotagratis", "discount",
-								 "porn", "bokep", "money", "pay"
-								 );
-			if (in_array($uri, $vocab_phishing))
-			{
-				$result = 1 ;
-			}
-		return $result;
+		// $result = 0 ;
+		// $vocab_phishing = array("secure","banking","gratis",
+		// 						 "kuotagratis", "discount",
+		// 						 "porn", "bokep", "money", "pay"
+		// 						 );
+		// 	if (in_array($uri, $vocab_phishing))
+		// 	{
+		// 		$result = 1 ;
+		// 	}
+		// return $result;
+		$array_of_sensitive_char =  array("secure","banking","gratis", "bank",
+										"kuotagratis", "discount", "payment",
+										"porn", "bokep", "money", "pay",
+										"sexy", "nude", "sex", "dick", "pussy",
+										"gambling", "judionline", "judi"
+										);
+		$contains = $this->contains($uri, $array_of_sensitive_char);
+		if($contains){
+			return 1;
+		}else{
+			return 0;
+		}
+		
 	}
 
 

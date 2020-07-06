@@ -552,6 +552,13 @@ class Maintwo extends CI_Controller {
 		}
 	}
 
+	//
+	public function cek_doubletopdomainfix($uri){
+		$parsed_url = parse_url($uri, PHP_URL_HOST); // scafol.co.id
+		$split = explode (".", $parsed_url);
+		return $split;
+	}
+
 
 	public function cek_shortlink($uri){
 		$array_of_shortlinkurl = array('bit.ly', 'tinyurl', 'rebrandly', 'ink', 'yourls');
