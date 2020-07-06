@@ -103,7 +103,7 @@ class Mainthree extends CI_Controller {
 				"html_login" => "".$this->cek_login($file_path),
 				"html_length" => "".$this->read_html_filesize($file_path),
 				"html_favicon" => "".$this->read_html_favicon($file_path),
-				"url_doubletopdomain" => "".$this->cek_doubletopdomain($file_path),
+				"url_doubletopdomain" => "".$this->cek_doubletopdomainfix($file_path),
 				"url_shortlink" => "".$this->cek_shortlink($file_path),
 				"url_domain_murah" => "".$this->cek_domainmurah($file_path),
 				"url_hosting_murah" => "".$this->cek_hostingmurah($file_path),
@@ -129,7 +129,7 @@ class Mainthree extends CI_Controller {
 			$b_f6 = $this->cek_login($file_path)  == true ? 1 : 0;
 			$b_f7 = $this->read_html_filesize($file_path)  == true ? 1 : 0;
 			$b_f8 = $this->read_html_favicon($url)  == true ? 1 : 0;
-			$b_f9 = $this->cek_doubletopdomain($url)  == true ? 1 : 0;
+			$b_f9 = $this->cek_doubletopdomainfix($url)  == true ? 1 : 0;
 			$b_f10 = $this->cek_shortlink($url) == true ? 1 : 0;
 			$b_f11 = $this->cek_domainmurah($url) == true ? 1 : 0 ;
 			$b_f12 = $this->cek_jumlahpath($url) == true ? 1 : 0;
