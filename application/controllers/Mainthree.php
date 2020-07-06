@@ -102,7 +102,6 @@ class Mainthree extends CI_Controller {
 				"url_sensitive_char" => "".$this->read_special_char($url),
 				"html_login" => "".$this->cek_login($file_path),
 				"html_length" => "".$this->read_html_filesize($file_path),
-				"html_iframe" => "".$this->read_html_iframe($file_path),
 				"html_favicon" => "".$this->read_html_favicon($file_path),
 				"url_doubletopdomain" => "".$this->cek_doubletopdomain($file_path),
 				"url_shortlink" => "".$this->cek_shortlink($file_path),
