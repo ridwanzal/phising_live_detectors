@@ -206,7 +206,7 @@ class Mainthree extends CI_Controller {
     }
     
     public function rule_b($uri){
-        $a= $this->cek_doubletopdomain($uri);
+        $a= $this->cek_doubletopdomainfix($uri);
 		if($a){
 			return 1;
 		}else{
@@ -630,9 +630,9 @@ class Mainthree extends CI_Controller {
 
 		$test =  $x - 1;
 		if($test > 1){
-			return true;
+			return $test;
 		}else{
-			return false;
+			return $test;
 		}
 
 	}
