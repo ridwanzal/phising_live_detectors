@@ -95,20 +95,20 @@ class Mainthree extends CI_Controller {
 			$feature_data = array(
 				"scan_id" => $id,
 				"url_link"=> "".$url,
-				"url_protocol" => "".$this->read_url_protocol($url),
-				"url_symbol" => "".$this->cek_symbols($url),
-				"url_length" => "".$this->cek_panjanguri($url),
-				"url_dot_total" => "".$this->cek_jumlahdot($url),
-				"url_sensitive_char" => "".$this->read_special_char($url),
-				"html_login" => "".$this->cek_login($file_path),
-				"html_length" => "".$this->read_html_filesize($file_path),
-				"html_favicon" => "".$this->read_html_favicon($file_path),
-				"url_doubletopdomain" => "".$this->cek_doubletopdomainfix($file_path),
-				"url_shortlink" => "".$this->cek_shortlink($file_path),
-				"url_domain_murah" => "".$this->cek_domainmurah($file_path),
-				"url_hosting_murah" => "".$this->cek_hostingmurah($file_path),
-				"url_totalpath" => "".$this->cek_jumlahpath($url),
-				"url_toptarget" => "".$this->read_toptarget($url)
+				"url_protocol" => "".$this->read_url_protocol($url) == true ? 1 : 0,
+				"url_symbol" => "".$this->cek_symbols($url) == true ? 1 : 0,
+				"url_length" => "".$this->cek_panjanguri($url) == true ? 1 : 0,
+				"url_dot_total" => "".$this->cek_jumlahdot($url) == true ? 1 : 0,
+				"url_sensitive_char" => "".$this->cek_sensitiveinfo($url) == true ? 1 : 0 ,
+				"html_login" => "".$this->cek_login($file_path) == true ? 1 : 0,
+				"html_length" => "".$this->read_html_filesize($file_path) == true ? 1 : 0,
+				"html_favicon" => "".$this->read_html_favicon($file_path) == true ? 1 : 0,
+				"url_doubletopdomain" => "".$this->cek_doubletopdomainfix($file_path) == true ? 1 : 0,
+				"url_shortlink" => "".$this->cek_shortlink($file_path) == true ? 1 : 0,
+				"url_domain_murah" => "".$this->cek_domainmurah($file_path) == true ? 1 : 0,
+				"url_hosting_murah" => "".$this->cek_hostingmurah($file_path) == true ? 1 : 0,
+				"url_totalpath" => "".$this->cek_jumlahpath($url) == true ? 1 : 0,
+				"url_toptarget" => "".$this->read_toptarget($url) == true ? 1 : 0
 			);	
             $this->db->insert('ph_features', $feature_data);
             
@@ -125,8 +125,8 @@ class Mainthree extends CI_Controller {
 			$b_f2 = $this->cek_symbols($url) == true ? 1 : 0;
 			$b_f3 = $this->cek_panjanguri($url)  == true ? 1 : 0;
 			$b_f4 = $this->cek_jumlahdot($url) == true ? 1 : 0;
-			$b_f5 = $this->read_special_char($url)  == true ? 1 : 0;
-			$b_f6 = $this->cek_login($file_path)  == true ? 1 : 0;
+			$b_f5 = $this->cek_sensitiveinfo($url)  == true ? 1 : 0;
+			$b_f6 = $this->cek_login($file_path) == true ? 1 : 0;
 			$b_f7 = $this->read_html_filesize($file_path)  == true ? 1 : 0;
 			$b_f8 = $this->read_html_favicon($url)  == true ? 1 : 0;
 			$b_f9 = $this->cek_doubletopdomainfix($url)  == true ? 1 : 0;
@@ -134,9 +134,10 @@ class Mainthree extends CI_Controller {
 			$b_f11 = $this->cek_domainmurah($url) == true ? 1 : 0 ;
 			$b_f12 = $this->cek_jumlahpath($url) == true ? 1 : 0;
 			$b_f13 = $this->read_toptarget($url) == true ? 1 : 0;
+			$b_f14 = $this->cek_hostingmurah($url) == true ? 1 : 0;
 
 
-			$arrayof_true = array($b_f1,$b_f2,$b_f3,$b_f4,$b_f5,$b_f6,$b_f7,$b_f8,$b_f9,$b_f10,$b_f11,$b_f12,$b_f13);
+			$arrayof_true = array($b_f1,$b_f2,$b_f3,$b_f4,$b_f5,$b_f6,$b_f7,$b_f8,$b_f9,$b_f10,$b_f11,$b_f12,$b_f13,$b_f14);
 			$counts = array_count_values($arrayof_true);
             $count_true =  $counts[1];
             

