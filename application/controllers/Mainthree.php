@@ -216,7 +216,7 @@ class Mainthree extends CI_Controller {
     }
 
     public function rule_c($uri){
-        $a = $this->cek_jumlahpath($uri);
+        $a = $this->cek_jumlahdot($uri);
         $b = $this->cek_symbols($uri);
         if($a && $b){
             return 1;
