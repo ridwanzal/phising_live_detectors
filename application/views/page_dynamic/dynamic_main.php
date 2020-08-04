@@ -21,7 +21,7 @@
     <div class="container">
         <!-- <div class="columns" style="padding-top:20px;">
                 <div class="field is-grouped">
-                <p class="control is-expanded">
+                <p class="control is-expanded">application/views/page_dynamic/dynamic_main.php
                     <input class="X" id="inputurl" type="text" name="urls" placeholder="Masukkan URL/ Domain Website" 
                     style="width:100%;" 
                     required>
@@ -180,6 +180,7 @@
                     $.ajax({
                         url: "<?php echo base_url(); ?>scan", 
                         method : 'POST',
+                        start_time: new Date().getTime(),   
                         data : {
                             urls : $('#inputurl').val()
                         },
@@ -196,6 +197,9 @@
                             }else{
                                 console.log(result);
                             }
+                        },
+                        complete: function(data) {
+                            alert('This request took '+(new Date().getTime() - this.start_time)+' ms');
                         },
                         error : function(result){
                             console.log('gagal broh');
